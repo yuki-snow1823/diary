@@ -1,0 +1,56 @@
+name: CI
+
+on: push
+
+env:
+  FILE_PATTERN: "./frontend/app/src/**/*.{ts,tsx,js,jsx}"
+
+jobs:
+  front:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 19.x
+      - name: Run lint
+        run: |
+          cd frontend/app
+          yarn install
+          yarn eslint --fix --quiet --ext .jsx,.js,.tsx,.ts './src/**/*.{ts,tsx,js,jsx}'
+
+      - name: Run Prettier
+        run: |
+          npx prettier --write ${FILE_PATTERN}
+      - uses: stefanzweifel/git-auto-commit-action@v3.0.0
+        with:
+          commit_message: Apply CI Prettier Change
+
+
+  api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Docker
+        shell: bash
+        run: |
+          docker-compose build
+          docker-compose up -d
+          sleep 30
+          docker-compose run api rails db:create db:migrate
+        env:
+          RAILS_ENV: test
+
+      - name: Run Rubocop
+        shell: bash
+        run: |
+          docker-compose run api bundle exec rubocop
+        env:
+          RAILS_ENV: test
+
+      - name: Run RSpec
+        shell: bash
+        run: |
+          docker-compose run api bundle exec rspec
+        env:
+          RAILS_ENV: test
