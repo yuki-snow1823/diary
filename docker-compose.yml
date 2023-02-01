@@ -22,7 +22,7 @@ services:
       TZ: Asia/Tokyo
       RAILS_ENV: development
     ports:
-      - 3001:3000
+      - 3000:3000
     depends_on:
       - db
 
@@ -33,7 +33,7 @@ services:
     working_dir: /usr/src/app
     command: sh -c "yarn && yarn start"
     ports:
-      - "4000:3000"
+      - "8080:3000"
 
 volumes:
   mysql-data:
