@@ -1,5 +1,5 @@
 build:
   docker:
-    web: Dockerfile
+    web: backend/Dockerfile
 run:
   web: mkdir -p tmp/pids && mkdir -p tmp/sockets && bundle exec puma -C config/puma.rb
