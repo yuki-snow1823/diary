@@ -6,6 +6,7 @@ module Resolvers
 
     def resolve(ids: nil)
       journals = Journal.all
+      journals = journals.where(id: ids) if ids.present?
       journals
     end
   end
