@@ -14,7 +14,7 @@ module Types
     end
 
     def journal(id:)
-      journals = Journal.find(id)
+      Journal.find(id)
     end
 
   end
