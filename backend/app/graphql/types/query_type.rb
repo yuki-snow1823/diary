@@ -16,6 +16,5 @@ module Types
     def journal(id:)
       Journal.find(id)
     end
-
   end
 end
