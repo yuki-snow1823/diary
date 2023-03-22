@@ -13,5 +13,11 @@ export const Sample = () => {
   if (loading) return <>'ロード中....'</>;
   if (error) return <>`Error ${error.message}`;</>;
 
-  return <>{data.testField}</>;
+  return (
+    <>
+      {data.testField}
+      <div>ログインフォーム</div>
+      <form action="post"></form>
+    </>
+  );
 };
