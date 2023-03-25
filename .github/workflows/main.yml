@@ -3,7 +3,7 @@ name: CI
 on: push
 
 env:
-  FILE_PATTERN: "./frontend/app/src/**/*.{ts,tsx,js,jsx}"
+  FILE_PATTERN: "./frontend/src/**/*.{ts,tsx,js,jsx}"
 
 jobs:
   front:
@@ -15,7 +15,7 @@ jobs:
           node-version: 19.x
       - name: Run lint
         run: |
-          cd frontend/app
+          cd frontend
           yarn install
           yarn eslint --fix --quiet --ext .jsx,.js,.tsx,.ts './src/**/*.{ts,tsx,js,jsx}'
 

@@ -29,7 +29,7 @@ services:
   front:
     image: node:19.3.0-alpine3.17
     volumes:
-      - ./frontend/app:/usr/src/app
+      - ./frontend:/usr/src/app
     working_dir: /usr/src/app
     command: sh -c "yarn && yarn start"
     ports:
