@@ -3,7 +3,7 @@ name: CI
 on: push
 
 env:
-  FILE_PATTERN: "./frontend/app/src/**/*.{ts,tsx,js,jsx}"
+  FILE_PATTERN: "./frontend/src/**/*.{ts,tsx,js,jsx}"
 
 jobs:
   front:
