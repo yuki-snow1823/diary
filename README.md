@@ -9,8 +9,8 @@ Diary
 `docker-compose up`で起動できるようになっています。
 
 初回起動時のみ、別のターミナルも起動して下記のコマンドを実行してください。
-`docker-compose run api rails db:create`
-`docker-compose run api rails db:migrate`
+`docker-compose exec api rails db:create`
+`docker-compose exec api rails db:migrate`
 
 
 ## 使用方法
