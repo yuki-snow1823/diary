@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
 
-rm -f /sample/tmp/pids/server.pid
+./entrypoint-script/wait-for-it.sh db:3306
 
 exec "$@"
