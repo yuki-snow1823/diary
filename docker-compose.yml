@@ -14,15 +14,16 @@ services:
     build:
       context: ./backend/
       dockerfile: Dockerfile.dev
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
     image: rails:dev
     volumes:
       - ./backend:/sample
     environment:
       TZ: Asia/Tokyo
       RAILS_ENV: development
+      GITHUB_ACTIONS: ${GITHUB_ACTIONS:-false}
     ports:
       - 3000:3000
+    entrypoint: ./entrypoint.sh
     depends_on:
       - db
 
