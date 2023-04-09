@@ -1,12 +1,12 @@
-import "./App.css";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import { Sample } from "./Sample";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import './App.css'
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
+import { Sample } from './Sample'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 const client = new ApolloClient({
-  uri: "https://tdiaryapi.herokuapp.com/graphql",
-  cache: new InMemoryCache(),
-});
+  uri: 'https://tdiaryapi.herokuapp.com/graphql',
+  cache: new InMemoryCache()
+})
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         </Routes>
       </ApolloProvider>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App
