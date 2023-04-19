@@ -26,7 +26,6 @@ jobs:
         with:
           commit_message: Apply CI Prettier Change
 
-
   api:
     runs-on: ubuntu-latest
     steps:
@@ -34,6 +33,8 @@ jobs:
       - name: Setup Docker
         shell: bash
         run: |
+          chmod +x ./backend/entrypoint.sh
+          chmod +x ./backend/entrypoint-script/*.sh
           docker-compose build
           docker-compose up -d
           sleep 30

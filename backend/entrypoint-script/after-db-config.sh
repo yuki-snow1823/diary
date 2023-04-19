@@ -20,4 +20,7 @@ while true; do
   fi
 done
 
-rails s -p 3000 -b '0.0.0.0'
+if [ "$GITHUB_ACTIONS" == false ] ; then
+  echo "rails server start on local"
+  rails s -p 3000 -b '0.0.0.0'
+fi
