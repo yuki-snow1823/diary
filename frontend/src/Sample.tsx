@@ -19,7 +19,6 @@ export const Sample = () => {
   }
 
   const handleSubmit = async (params: SignInParams) => {
-
     try {
       const res = await signIn(params)
       console.log(res)
@@ -44,7 +43,7 @@ export const Sample = () => {
   return (
     <>
       <form>
-        <h2>{ currentUser?.email }でログインしてるよ</h2>
+        <h2>{currentUser?.email}でログインしてるよ</h2>
         <div>
           <label htmlFor="email">Email</label>
           <input
