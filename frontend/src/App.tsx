@@ -1,6 +1,7 @@
 import './App.css'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 import { Sample } from './Sample'
+import { Test } from './Test'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 const client = new ApolloClient({
@@ -14,6 +15,7 @@ function App() {
       <ApolloProvider client={client}>
         <Routes>
           <Route path="/sample" element={<Sample />} />
+          <Route path="/test" element={<Test />} />
         </Routes>
       </ApolloProvider>
     </BrowserRouter>
