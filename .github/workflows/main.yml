@@ -26,7 +26,6 @@ jobs:
         with:
           commit_message: Apply CI Prettier Change
 
-
   api:
     runs-on: ubuntu-latest
     steps:
@@ -36,8 +35,6 @@ jobs:
         run: |
           docker-compose build
           docker-compose up -d
-          sleep 30
-          docker-compose run api rails db:create db:migrate
         env:
           RAILS_ENV: test
 

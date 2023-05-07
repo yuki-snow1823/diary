@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
 
-rm -f /sample/tmp/pids/server.pid
-
-exec "$@"
+chmod +x ./entrypoint-script/*
+./entrypoint-script/wait-for-it.sh db:3306
