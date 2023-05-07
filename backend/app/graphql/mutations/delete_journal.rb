@@ -10,8 +10,7 @@ module Mutations
       {
         journal:
       }
-
-    rescue => e
+    rescue StandardError => e
       GraphQL::ExecutionError.new(e.message)
     end
   end
