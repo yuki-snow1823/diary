@@ -8,39 +8,38 @@ export interface SignInParams {
   password: string
 }
 
-const handleSubmit = async (params :SignInParams) => {
-  console.log('aaaaaaa')
-  
-  const { setIsSignedIn, setCurrentUser } = useContext(AuthContext)
-
-  try {
-    const res = await signIn(params)
-    console.log(res)
-
-    if (res.status === 200) {
-      Cookies.set('_access_token', res.headers['access-token'])
-      Cookies.set('_client', res.headers['client'])
-      Cookies.set('_uid', res.headers['uid'])
-
-      setIsSignedIn(true)
-      setCurrentUser(res.data.data)
-
-      console.log('Signed in successfully!')
-    } else {
-      console.log('faild')
-    }
-  } catch (err) {
-    console.log(err)
-  }
-}
-
 export const Sample = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const { setIsSignedIn, setCurrentUser } = useContext(AuthContext)
 
   const params: SignInParams = {
     email: email,
     password: password
+  }
+
+  const handleSubmit = async (params: SignInParams) => {
+    console.log('aaaaaaa')
+
+    try {
+      const res = await signIn(params)
+      console.log(res)
+
+      if (res.status === 200) {
+        Cookies.set('_access_token', res.headers['access-token'])
+        Cookies.set('_client', res.headers['client'])
+        Cookies.set('_uid', res.headers['uid'])
+
+        setIsSignedIn(true)
+        setCurrentUser(res.data.data)
+
+        console.log('Signed in successfully!')
+      } else {
+        console.log('faild')
+      }
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -66,7 +65,11 @@ export const Sample = () => {
             required
           />
         </div>
-        <button onClick={() => handleSubmit(params)} type="submit" disabled={!email || !password}>
+        <button
+          onClick={() => handleSubmit(params)}
+          type="button"
+          disabled={!email || !password}
+        >
           Submit
         </button>
       </form>
