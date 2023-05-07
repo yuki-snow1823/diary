@@ -8,7 +8,7 @@ export interface SignInParams {
   password: string
 }
 
-export const Sample = () => {
+export const Signin = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const { setIsSignedIn, setCurrentUser, currentUser } = useContext(AuthContext)
