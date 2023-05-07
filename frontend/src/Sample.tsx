@@ -11,7 +11,7 @@ export interface SignInParams {
 export const Sample = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  const { setIsSignedIn, setCurrentUser } = useContext(AuthContext)
+  const { setIsSignedIn, setCurrentUser, currentUser } = useContext(AuthContext)
 
   const params: SignInParams = {
     email: email,
@@ -19,7 +19,6 @@ export const Sample = () => {
   }
 
   const handleSubmit = async (params: SignInParams) => {
-    console.log('aaaaaaa')
 
     try {
       const res = await signIn(params)
@@ -45,6 +44,7 @@ export const Sample = () => {
   return (
     <>
       <form>
+        <h2>{ currentUser?.email }でログインしてるよ</h2>
         <div>
           <label htmlFor="email">Email</label>
           <input
