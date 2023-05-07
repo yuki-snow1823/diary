@@ -1,7 +1,11 @@
 import './App.css'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
+<<<<<<< HEAD
 import { Sample } from './Sample'
 import { Test } from './Test'
+=======
+import { Signin } from './SignIn'
+>>>>>>> dad4361 (sign_inページの表示)
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { getCurrentUser } from './lib/api/auth'
 import { createContext, useEffect, useState } from 'react'
