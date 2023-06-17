@@ -20,3 +20,33 @@ Diary
 ## テスト方法
 Github Actionsでpushした際に自動テストが実行されるようになっています。
 ローカルでの実行方法は工事中です。
+
+## インフラ構成図
+
+```mermaid
+flowchart TB
+    subgraph DockerContainer
+        Rails
+
+    end
+    DockerContainer<-->|GraphQL|React
+    subgraph Heroku
+		
+			DockerContainer<-->Postgres
+			subgraph HerokuAddOn
+				Postgres
+			end
+    end
+    subgraph Vercel
+
+    React
+    end
+
+		style React fill:#D7E7AF,stroke:#000000,stroke-width:4px
+		style Vercel fill:#A2D7D4,stroke:#000000,stroke-width:4px
+		style Rails fill:#F5B2B2,stroke:#000000,stroke-width:4px
+		style Heroku fill:#A59ACA,stroke:#000000,stroke-width:4px
+		style DockerContainer fill:#9FD9F6,stroke:#000000,stroke-width:4px
+		style HerokuAddOn fill:#CFA7CD,stroke:#000000,stroke-width:4px
+		style Postgres fill:#A3BCE2,stroke:#000000,stroke-width:4px
+```
