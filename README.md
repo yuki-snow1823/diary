@@ -51,7 +51,7 @@ flowchart TB
 		style MySQL fill:#A3BCE2,stroke:#000000,stroke-width:4px
 ```
 
-### ActionController::RoutingError (No route matches [GET] "/ws"): のエラーが気になる場合
+## ActionController::RoutingError (No route matches [GET] "/ws"): のエラーが気になる場合
 
 原因はまだわかっていないようです。以下のコマンドを実行してください。
 
