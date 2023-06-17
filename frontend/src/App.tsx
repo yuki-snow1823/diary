@@ -1,4 +1,3 @@
-import './App.css'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 import { Sample } from './Sample'
 import { Test } from './Test'
