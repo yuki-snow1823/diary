@@ -50,6 +50,13 @@ flowchart TB
 		style HerokuAddOn fill:#CFA7CD,stroke:#000000,stroke-width:4px
 		style MySQL fill:#A3BCE2,stroke:#000000,stroke-width:4px
 ```
+
+### ActionController::RoutingError (No route matches [GET] "/ws"): のエラーが気になる場合
+
+原因はまだわかっていないようです。以下のコマンドを実行してください。
+
+`echo "WDS_SOCKET_PORT=0" >> frontend/.env`
+
 ## フロントエンド構成
 アーキテクチャは**container presentational pattern**を利用：[参考記事](https://zenn.dev/buyselltech/articles/9460c75b7cd8d1)
 - srcディレクトリ配下に機能ごとのディレクトリ&share（全体で利用できるもの）を配置
