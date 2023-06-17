@@ -55,5 +55,5 @@ flowchart TB
 
 原因はまだわかっていないようです。以下のコマンドを実行してください。
 
-`echo "WDS_SOCKET_PORT=0" >> diary/frontend/.env`
+`echo "WDS_SOCKET_PORT=0" >> frontend/.env`
 
