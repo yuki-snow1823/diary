@@ -57,3 +57,24 @@ flowchart TB
 
 `echo "WDS_SOCKET_PORT=0" >> frontend/.env`
 
+## フロントエンド構成
+アーキテクチャは**container presentational pattern**を利用：[参考記事](https://zenn.dev/buyselltech/articles/9460c75b7cd8d1)
+- srcディレクトリ配下に機能ごとのディレクトリ&share（全体で利用できるもの）を配置
+- 機能ごとのディクトリ配下
+	- component: container, presentationalファイル
+	- hooks: メソッドの集まり
+
+ディレクトリ構成例
+```
+frontend/
+	└ src/
+		├ 機能ごとのディレクトリ（loginなど）
+		│ 	├ component/
+		│ 	│		├ container.tsx
+		│ 	│		└ presentational.tsx
+		│ 	└ hooks/
+		├ ...
+		└ share/：全体で利用できるもの
+			├ button.tsx
+			├ ...
+```
