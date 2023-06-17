@@ -3109,6 +3109,25 @@ axios@*, axios@^1.4.0:
     form-data "^4.0.0"
     proxy-from-env "^1.1.0"
 
+axios-case-converter@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/axios-case-converter/-/axios-case-converter-1.1.0.tgz#7306943cf5608769794c6072b89eacb1e289f178"
+  integrity sha512-XmeffqomjVRhYRXQdw7FaeJhFUvsqt0oXMzfPDaZE1ibBkZ8zeAdgMYBGYlMegXUjpzg48pKZ+SLkz6RH2yYkA==
+  dependencies:
+    camel-case "^4.1.1"
+    header-case "^2.0.3"
+    snake-case "^3.0.3"
+    tslib "^2.3.0"
+
+axios@*, axios@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.4.0.tgz#38a7bf1224cd308de271146038b551d725f0be1f"
+  integrity sha512-S4XCWMEmzvo64T9GfvQDOXgYRDJ/wsSZc7Jvdgx5u1sd0JwsuPLqb3SYmusag+edF6ziyMensPVqLTSc1PiSEA==
+  dependencies:
+    follow-redirects "^1.15.0"
+    form-data "^4.0.0"
+    proxy-from-env "^1.1.0"
+
 axobject-query@^3.1.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/axobject-query/-/axobject-query-3.2.1.tgz#39c378a6e3b06ca679f29138151e45b2b32da62a"
@@ -3434,6 +3453,15 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001464, caniuse-lite@^1.0.30001503:
   version "1.0.30001503"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001503.tgz#88b6ff1b2cf735f1f3361dc1a15b59f0561aa398"
   integrity sha512-Sf9NiF+wZxPfzv8Z3iS0rXM1Do+iOy2Lxvib38glFX+08TCYYYGR5fRJXk4d77C4AYwhUjgYgMsMudbh2TqCKw==
+
+capital-case@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/capital-case/-/capital-case-1.0.4.tgz#9d130292353c9249f6b00fa5852bee38a717e669"
+  integrity sha512-ds37W8CytHgwnhGGTi88pcPyR15qoNkOpYwmMMfnWqqWgESapLqvDx6huFjQ5vqWSn2Z06173XNA7LtMOeUh1A==
+  dependencies:
+    no-case "^3.0.4"
+    tslib "^2.0.3"
+    upper-case-first "^2.0.2"
 
 capital-case@^1.0.4:
   version "1.0.4"
@@ -5295,8 +5323,11 @@ he@^1.2.0:
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 hoist-non-react-statics@^3.3.1, hoist-non-react-statics@^3.3.2:
 =======
+=======
+>>>>>>> 9f50a4045f977dadc516889cce37492d587a57db
 header-case@^2.0.3:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/header-case/-/header-case-2.0.4.tgz#5a42e63b55177349cf405beb8d775acabb92c063"
@@ -6392,11 +6423,14 @@ jest@^27.4.3:
     jest-cli "^27.5.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 jiti@^1.18.2:
   version "1.18.2"
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.18.2.tgz#80c3ef3d486ebf2450d9335122b32d121f2a83cd"
   integrity sha512-QAdOptna2NYiSSpv0O/BwoHBSmz4YhpzJHyi+fnMRTXFjp7B8i/YG5Z8IfusxB1ufjcD2Sre1F3R+nX3fvy7gg==
 =======
+=======
+>>>>>>> 9f50a4045f977dadc516889cce37492d587a57db
 js-cookie@^3.0.5:
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-3.0.5.tgz#0b7e2fd0c01552c58ba86e0841f94dc2557dcdbc"

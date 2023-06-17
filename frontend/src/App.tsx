@@ -1,11 +1,7 @@
 import './App.css'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
-<<<<<<< HEAD
-import { Sample } from './Sample'
 import { Test } from './Test'
-=======
 import { Signin } from './SignIn'
->>>>>>> dad4361 (sign_inページの表示)
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { getCurrentUser } from './lib/api/auth'
 import { createContext, useEffect, useState } from 'react'
@@ -68,14 +64,24 @@ function App() {
   }, [setCurrentUser])
 
   return (
-    <BrowserRouter>
-      <ApolloProvider client={client}>
-        <Routes>
-          <Route path="/sample" element={<Sample />} />
-          <Route path="/test" element={<Test />} />
-        </Routes>
-      </ApolloProvider>
-    </BrowserRouter>
+    <AuthContext.Provider
+      value={{
+        loading,
+        setLoading,
+        isSignedIn,
+        setIsSignedIn,
+        currentUser,
+        setCurrentUser
+      }}
+    >
+      <BrowserRouter>
+        <ApolloProvider client={client}>
+          <Routes>
+            <Route path="/sign_in" element={<Signin />} />
+          </Routes>
+        </ApolloProvider>
+      </BrowserRouter>
+    </AuthContext.Provider>
   )
 }
 
