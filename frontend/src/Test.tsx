@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button, Box } from '@mui/material'
 import { Favorite, Delete, Add, AccountCircle } from '@mui/icons-material'
 
