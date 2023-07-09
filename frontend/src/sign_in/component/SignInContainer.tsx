@@ -2,14 +2,14 @@ import React, { useState, useContext } from 'react'
 import Cookies from 'js-cookie'
 import { signIn } from '../../lib/api/auth'
 import { AuthContext } from '../../App'
-import LoginPresentational from './LoginPresentational'
+import SignInPresentationl from './SignInPresentational'
 
 export interface SignInParams {
   email: string
   password: string
 }
 
-export const LoginContainer = () => {
+export const SignInContainer = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const { setIsSignedIn, setCurrentUser, currentUser } = useContext(AuthContext)
@@ -42,7 +42,7 @@ export const LoginContainer = () => {
   }
 
   return (
-    <LoginPresentational
+    <SignInPresentationl
       currentUser={currentUser}
       email={email}
       password={password}

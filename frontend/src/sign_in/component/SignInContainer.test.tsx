@@ -1,8 +1,8 @@
 import { render, fireEvent, waitFor } from '@testing-library/react'
-import { Signin } from './SignIn'
+import { SignInContainer } from './SignInContainer'
 
-jest.mock('./lib/api/auth', () => ({
-  signIn: jest.fn().mockResolvedValue({
+jest.mock('./../../lib/api/auth.ts', () => ({
+  signInContainer: jest.fn().mockResolvedValue({
     status: 200,
     headers: {
       'access-token': 'mock-access-token',
@@ -17,9 +17,9 @@ jest.mock('./lib/api/auth', () => ({
   })
 }))
 
-describe('Signin', () => {
+describe('SignInContainer', () => {
   it('should submit form and set signed-in state', async () => {
-    const { getByLabelText, getByText } = render(<Signin />)
+    const { getByLabelText, getByText } = render(<SignInContainer />)
     const emailInput = getByLabelText('Email') as HTMLInputElement
     const passwordInput = getByLabelText('Password') as HTMLInputElement
     const submitButton = getByText('Submit')

@@ -1,5 +1,4 @@
 import React from 'react'
-import { type } from 'os'
 import { User } from '../../App'
 
 type Props = {
@@ -11,7 +10,7 @@ type Props = {
   handleSubmit: () => Promise<void>
 }
 
-const LoginPresentational: React.FC<Props> = (props) => {
+const SignInPresentational: React.FC<Props> = (props) => {
   return (
     <>
       <form>
@@ -48,4 +47,4 @@ const LoginPresentational: React.FC<Props> = (props) => {
   )
 }
 
-export default LoginPresentational
+export default SignInPresentational
