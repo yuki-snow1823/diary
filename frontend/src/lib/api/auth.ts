@@ -35,7 +35,7 @@ export const getCurrentUser = () => {
   if (!Cookies.get('_access_token')) return
   if (!Cookies.get('_client')) return
   if (!Cookies.get('_uid')) return
-  
+
   return client.get('/auth/sessions', {
     headers: {
       'access-token': Cookies.get('_access_token'),
