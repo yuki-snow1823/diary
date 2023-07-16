@@ -14,7 +14,11 @@ const SignInPresentational: React.FC<Props> = (props) => {
   return (
     <>
       <form>
-        {props.currentUser ? <h2>{props.currentUser.email}でログインしてるよ</h2> : ''}
+        {props.currentUser ? (
+          <h2>{props.currentUser.email}でログインしてるよ</h2>
+        ) : (
+          ''
+        )}
         <div>
           <label htmlFor="email">Email</label>
           <input
