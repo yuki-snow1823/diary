@@ -3,10 +3,10 @@ import { User } from '../../App'
 
 type Props = {
   currentUser: User | undefined
-  email: string;
-  password: string;
-  handleEmailChange: React.ChangeEventHandler<HTMLInputElement>;
-  handlePasswordChange: React.ChangeEventHandler<HTMLInputElement>;
+  email: string
+  password: string
+  handleEmailChange: React.ChangeEventHandler<HTMLInputElement>
+  handlePasswordChange: React.ChangeEventHandler<HTMLInputElement>
   handleSubmit: () => Promise<void>
 }
 

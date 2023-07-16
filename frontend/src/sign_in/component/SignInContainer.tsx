@@ -19,9 +19,11 @@ export const SignInContainer = () => {
     password: password
   }
 
-  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setEmail(e.target.value)
 
-  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setPassword(e.target.value)
 
   const handleSubmit = async () => {
     try {
