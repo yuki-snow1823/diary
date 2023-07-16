@@ -3,10 +3,10 @@ import { User } from '../../App'
 
 type Props = {
   currentUser: User | undefined
-  email: string
-  password: string
-  setEmail: React.Dispatch<React.SetStateAction<string>>
-  setPassword: React.Dispatch<React.SetStateAction<string>>
+  email: string;
+  password: string;
+  handleEmailChange: React.ChangeEventHandler<HTMLInputElement>;
+  handlePasswordChange: React.ChangeEventHandler<HTMLInputElement>;
   handleSubmit: () => Promise<void>
 }
 
@@ -21,7 +21,7 @@ const SignInPresentational: React.FC<Props> = (props) => {
             id="email"
             type="email"
             value={props.email}
-            onChange={(e) => props.setEmail(e.target.value)}
+            onChange={props.handleEmailChange}
             required
           />
         </div>
@@ -31,12 +31,12 @@ const SignInPresentational: React.FC<Props> = (props) => {
             id="password"
             type="password"
             value={props.password}
-            onChange={(e) => props.setPassword(e.target.value)}
+            onChange={props.handlePasswordChange}
             required
           />
         </div>
         <button
-          onClick={() => props.handleSubmit()}
+          onClick={props.handleSubmit}
           type="button"
           disabled={!props.email || !props.password}
         >

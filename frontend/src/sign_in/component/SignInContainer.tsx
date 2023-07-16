@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, ChangeEvent } from 'react'
 import Cookies from 'js-cookie'
 import { signIn } from '../../lib/api/auth'
 import { AuthContext } from '../../App'
-import SignInPresentational from './SignInPresentational'
+import SignInPresentationl from './SignInPresentational'
 
 export interface SignInParams {
   email: string
@@ -19,7 +19,11 @@ export const SignInContainer = () => {
     password: password
   }
 
-  const handleSubmit = async (params: SignInParams) => {
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)
+
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)
+
+  const handleSubmit = async () => {
     try {
       const res = await signIn(params)
       console.log(res)
@@ -42,13 +46,13 @@ export const SignInContainer = () => {
   }
 
   return (
-    <SignInPresentational
+    <SignInPresentationl
       currentUser={currentUser}
       email={email}
       password={password}
-      setEmail={setEmail}
-      setPassword={setPassword}
-      handleSubmit={() => handleSubmit(params)}
+      handleEmailChange={handleEmailChange}
+      handlePasswordChange={handlePasswordChange}
+      handleSubmit={handleSubmit}
     />
   )
 }
