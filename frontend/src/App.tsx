@@ -43,7 +43,7 @@ function App() {
     try {
       const res = await getCurrentUser()
 
-      if (res?.data.isLogin === true) {
+      if (res?.data.isLogin) {
         setIsSignedIn(true)
         setCurrentUser(res?.data.data)
 
