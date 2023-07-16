@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import Cookies from 'js-cookie'
 import { signIn } from '../../lib/api/auth'
 import { AuthContext } from '../../App'
-import SignInPresentationl from './SignInPresentational'
+import SignInPresentational from './SignInPresentational'
 
 export interface SignInParams {
   email: string
@@ -42,7 +42,7 @@ export const SignInContainer = () => {
   }
 
   return (
-    <SignInPresentationl
+    <SignInPresentational
       currentUser={currentUser}
       email={email}
       password={password}
