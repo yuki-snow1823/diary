@@ -60,7 +60,7 @@ function App() {
 
   useEffect(() => {
     handleGetCurrentUser()
-  }, [setCurrentUser])
+  }, [])
 
   return (
     <AuthContext.Provider
