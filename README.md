@@ -9,7 +9,8 @@ Diary
 
 ## 開発環境の構築方法
 
-`docker-compose up`で起動できるようになっています。
+`docker-compose up`でバックエンドのAPIを起動することができます。
+その後、frontendのディレクトリで`yarn install && yarn start`を実行してください。
 
 ## 使用方法
 
