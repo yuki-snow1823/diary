@@ -18,7 +18,7 @@ RSpec.describe Mutations::CreateJournal do
 
   let(:title) { 'test_title' }
   let(:content) { 'test_content' }
-  let(:user_id) { user.id } 
+  let(:user_id) { user.id }
 
   let(:result) do
     BackendSchema.execute(
