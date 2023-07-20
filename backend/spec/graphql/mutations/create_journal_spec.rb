@@ -24,8 +24,8 @@ RSpec.describe Mutations::CreateJournal do
     BackendSchema.execute(
       mutation,
       variables: {
-        title: title,
-        content: content,
+        title:,
+        content:,
         userId: user_id
       }
     )
