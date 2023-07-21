@@ -1,19 +1,19 @@
-import React from 'react';
-import { User } from '../../App';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+import React from 'react'
+import { User } from '../../App'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import Container from '@mui/material/Container'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 
 type Props = {
-  currentUser: User | undefined;
-  email: string;
-  password: string;
-  handleEmailChange: React.ChangeEventHandler<HTMLInputElement>;
-  handlePasswordChange: React.ChangeEventHandler<HTMLInputElement>;
-  handleSubmit: () => Promise<void>;
-};
+  currentUser: User | undefined
+  email: string
+  password: string
+  handleEmailChange: React.ChangeEventHandler<HTMLInputElement>
+  handlePasswordChange: React.ChangeEventHandler<HTMLInputElement>
+  handleSubmit: () => Promise<void>
+}
 
 const SignInPresentational: React.FC<Props> = (props) => {
   return (
@@ -21,7 +21,9 @@ const SignInPresentational: React.FC<Props> = (props) => {
       <Box sx={{ my: 4 }}>
         {props.currentUser ? (
           <Typography variant="h4" component="h2" gutterBottom>
-            {props.currentUser.email}<br/>でログインしてるよ
+            {props.currentUser.email}
+            <br />
+            でログインしてるよ
           </Typography>
         ) : null}
 
@@ -58,7 +60,7 @@ const SignInPresentational: React.FC<Props> = (props) => {
         </Button>
       </Box>
     </Container>
-  );
-};
+  )
+}
 
-export default SignInPresentational;
+export default SignInPresentational
