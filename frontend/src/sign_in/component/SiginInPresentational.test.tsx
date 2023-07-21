@@ -1,19 +1,19 @@
-import { render, fireEvent, screen, waitFor } from '@testing-library/react';
-import SignInPresentational from './SignInPresentational';
+import { render, fireEvent, screen, waitFor } from '@testing-library/react'
+import SignInPresentational from './SignInPresentational'
 
 test('SignInPresentationalのフォームが適切に入力できる', async () => {
-  let mockEmail = '';
-  let mockPassword = '';
+  let mockEmail = ''
+  let mockPassword = ''
 
-  const handleEmailChange = jest.fn(event => {
-    mockEmail = event.target.value;
-  });
+  const handleEmailChange = jest.fn((event) => {
+    mockEmail = event.target.value
+  })
 
-  const handlePasswordChange = jest.fn(event => {
-    mockPassword = event.target.value;
-  });
+  const handlePasswordChange = jest.fn((event) => {
+    mockPassword = event.target.value
+  })
 
-  const handleSubmit = jest.fn(() => Promise.resolve());
+  const handleSubmit = jest.fn(() => Promise.resolve())
 
   render(
     <SignInPresentational
@@ -24,21 +24,21 @@ test('SignInPresentationalのフォームが適切に入力できる', async () 
       handlePasswordChange={handlePasswordChange}
       handleSubmit={handleSubmit}
     />
-  );
+  )
 
-  const emailField = screen.getByLabelText(/email/i);
-  const passwordField = screen.getByLabelText(/password/i);
-  const signInButton = screen.getByRole('button', { name: /sign in/i });
+  const emailField = screen.getByLabelText(/email/i)
+  const passwordField = screen.getByLabelText(/password/i)
+  const signInButton = screen.getByRole('button', { name: /sign in/i })
 
-  expect(emailField).toBeInTheDocument();
-  expect(passwordField).toBeInTheDocument();
-  expect(signInButton).toBeInTheDocument();
+  expect(emailField).toBeInTheDocument()
+  expect(passwordField).toBeInTheDocument()
+  expect(signInButton).toBeInTheDocument()
 
-  fireEvent.change(emailField, { target: { value: 'test@email.com' } });
-  fireEvent.change(passwordField, { target: { value: 'testpassword' } });
-  fireEvent.click(signInButton);
+  fireEvent.change(emailField, { target: { value: 'test@email.com' } })
+  fireEvent.change(passwordField, { target: { value: 'testpassword' } })
+  fireEvent.click(signInButton)
 
-  expect(handleEmailChange).toHaveBeenCalledTimes(1);
-  expect(handlePasswordChange).toHaveBeenCalledTimes(1);
+  expect(handleEmailChange).toHaveBeenCalledTimes(1)
+  expect(handlePasswordChange).toHaveBeenCalledTimes(1)
   // handleSubmitもテストしたかったが、うまくいかなかったので一旦保留
-});
+})
