@@ -38,9 +38,7 @@ test('SignInPresentationalのフォームが適切に入力できる', async () 
   fireEvent.change(passwordField, { target: { value: 'testpassword' } });
   fireEvent.click(signInButton);
 
-  await waitFor(() => {
-    expect(handleEmailChange).toHaveBeenCalledTimes(1);
-    expect(handlePasswordChange).toHaveBeenCalledTimes(1);
-    // handleSubmitもテストしたかったが、うまくいかなかったので一旦保留
-  });
+  expect(handleEmailChange).toHaveBeenCalledTimes(1);
+  expect(handlePasswordChange).toHaveBeenCalledTimes(1);
+  // handleSubmitもテストしたかったが、うまくいかなかったので一旦保留
 });
