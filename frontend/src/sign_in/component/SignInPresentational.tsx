@@ -1,5 +1,5 @@
 import React from 'react'
-import { User } from '../../App'
+import { User } from '@/App'
 
 type Props = {
   currentUser: User | undefined
