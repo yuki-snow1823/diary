@@ -17,6 +17,8 @@ module Mutations
       {
         journal:
       }
+    rescue ActiveRecord::RecordNotFound => e
+      raise GraphQL::ExecutionError.new(e, extensions: { code: 'RECORD_NOT_FOUND' })
     end
   end
 end

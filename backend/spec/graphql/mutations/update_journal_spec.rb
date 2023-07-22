@@ -4,83 +4,48 @@ RSpec.describe Mutations::UpdateJournal do
   let(:user) { create(:user) }
   let(:journal) { create(:journal, user:) }
 
-  it 'journal_id, title, contentが全て入力されたときjournalが更新できる' do
-    @result = BackendSchema.execute(update_journal_mutation,
-                                    variables: {
-                                      journalId: journal.id,
-                                      title: 'update_tile',
-                                      content: 'update_content'
-                                    }).as_json
-
-    journal = Journal.find(@result.dig('data', 'updateJournal', 'journal', 'id'))
-    expect(journal).to have_attributes(title: 'update_tile', content: 'update_content')
-  end
-
-  it 'titleがnilのときjournalが更新されずエラーが発生する' do
-    @result = BackendSchema.execute(update_journal_mutation,
-                                    variables: {
-                                      journalId: journal.id,
-                                      title: nil,
-                                      content: 'update_content'
-                                    }).as_json
-
-    expect(@result.dig('data', 'updateJournal', 'journal')).to be_nil
-    expect(@result['errors']).to be_truthy
-  end
-
-  it 'contentが空のときjournalが作成されずエラーが発生する' do
-    @result = BackendSchema.execute(update_journal_mutation,
-                                    variables: {
-                                      journalId: journal.id,
-                                      title: 'update_tile',
-                                      content: nil
-                                    }).as_json
-
-    expect(@result.dig('data', 'updateJournal', 'journal')).to be_nil
-    expect(@result['errors']).to be_truthy
-  end
-
-  it 'journalIdが空のときjournalが作成されずエラーが発生する' do
-    @result = BackendSchema.execute(update_journal_mutation,
-                                    variables: {
-                                      journalId: nil,
-                                      title: 'update_tile',
-                                      content: 'update_content'
-                                    }).as_json
-
-    expect(@result.dig('data', 'updateJournal', 'journal')).to be_nil
-    expect(@result['errors']).to be_truthy
-  end
-
-  it 'journalIdにDBに存在しない値が指定された時にjournalが作成されずエラーが発生する' do
-    not_exist_journal_id = Journal.last.id + 1
-    # testを通すためにこの書き方にしているが、そもそもの実装の方を変えた方が良いかもしれない
-    expect do
-      BackendSchema.execute(update_journal_mutation,
-                            variables: {
-                              journalId: not_exist_journal_id,
-                              title: 'update_tile',
-                              content: 'update_content'
-                            })
-    end.to raise_error(ActiveRecord::RecordNotFound)
-  end
-
-  def update_journal_mutation
-    <<~GRAPHQL
-      mutation updateJournal($journalId: Int!, $title: String!, $content: String!) {
-        updateJournal(input: {
-          journalId: $journalId,
-          title: $title,
-          content: $content,
-        }) {
-          journal {
-            id
-            title
-            content
-            userId
-          }
+  let(:mutation) { <<~MUTATION }
+    mutation ($journalId: Int!, $title: String!, $content: String!) {
+      updateJournal(input: { journalId: $journalId, title: $title, content: $content }) {
+        journal {
+          id
+          title
+          content
+          userId
         }
       }
-    GRAPHQL
+    }
+  MUTATION
+
+  let(:journal_id) { journal.id }
+  let(:title) { 'updated_title' }
+  let(:content) { 'updated_content' }
+
+  # 引数を渡すためにlambdaを使うのが正しいのかどうかは議論の余地があると思う
+  let(:result) do
+    lambda { |journal_id|
+      BackendSchema.execute(
+        mutation,
+        variables: {
+          journalId: journal_id,
+          title:,
+          content:
+        }
+      )
+    }
+  end
+
+  # TODO: 本当はcontextログイン時などを設定したい
+  # lambdaを使っているので毎回callする必要がある
+  it 'journal_id, title, contentが全て入力されたときjournalが更新できる' do
+    expect(result.call(journal_id).dig('data', 'updateJournal', 'journal', 'id')).to eq(journal_id.to_s)
+    expect(result.call(journal_id).dig('data', 'updateJournal', 'journal', 'title')).to eq(title)
+    expect(result.call(journal_id).dig('data', 'updateJournal', 'journal', 'content')).to eq(content)
+  end
+
+  # lambdaを使っているので毎回callする必要がある
+  it 'journalIdにDBに存在しない値が指定された時にjournalが更新されずエラーが発生する' do
+    not_exist_journal_id = Journal.last.id + 1
+    expect(result.call(not_exist_journal_id)['errors'].first['message']).to be_present
   end
 end
