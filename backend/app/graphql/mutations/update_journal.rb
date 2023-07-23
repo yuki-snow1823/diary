@@ -9,9 +9,16 @@ module Mutations
 
     def resolve(journal_id:, title:, content:)
       journal = Journal.find(journal_id)
-      journal.update!({ title:, content: })
+      journal.update!({
+                        title:,
+                        content:
+                      })
 
-      { journal: }
+      {
+        journal:
+      }
+    rescue ActiveRecord::RecordNotFound => e
+      raise GraphQL::ExecutionError.new(e, extensions: { code: 'RECORD_NOT_FOUND' })
     end
   end
 end
