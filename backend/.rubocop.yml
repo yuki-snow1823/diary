@@ -17,3 +17,6 @@ MethodLength:
   Max: 24
 Naming/MethodParameterName:
   Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'

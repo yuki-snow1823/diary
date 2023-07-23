@@ -26,28 +26,26 @@ jobs:
         with:
           commit_message: Apply CI Prettier Change
 
-
   api:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Docker
+      - name: Setup Docker and DB
         shell: bash
         run: |
           docker-compose build
-          docker-compose up -d
-          sleep 30
-          docker-compose run api rails db:create db:migrate
+          docker-compose up -d db
+          sleep 15
+          docker-compose exec -T db mysqladmin ping --silent
+          docker-compose run api bundle exec rails db:create db:schema:load
         env:
           RAILS_ENV: test
-
       - name: Run Rubocop
         shell: bash
         run: |
           docker-compose run api bundle exec rubocop
         env:
           RAILS_ENV: test
-
       - name: Run RSpec
         shell: bash
         run: |
