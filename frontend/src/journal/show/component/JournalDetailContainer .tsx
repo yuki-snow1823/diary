@@ -1,21 +1,16 @@
 import { useQuery } from '@apollo/client'
 import { FIND_JOURNAL } from '../graphql/query'
-import { useLayoutEffect } from 'react'
 
 export const JournalDetailContainer = () => {
-  const [findJournal] = useQuery(FIND_JOURNAL)
-
-  useLayoutEffect (() => {
-      const handleFindJournal = async (id: number)
-      => {
-        try {
-          const res = await findJournal({
-            variables: {
-              journalId: id
-            }
-          })
-        }
-      }
-    }
+  const { loading, error, data } = useQuery(FIND_JOURNAL, { variables: { id: 1 } })
+	if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error! {error.message}</p>;
+  console.log(data.journal.title)
+  return (
+    <>
+      <p>{data.journal.id}</p>
+      <p>{data.journal.title}</p>
+      <p>{data.journal.content}</p>
+    </>
   )
 }
