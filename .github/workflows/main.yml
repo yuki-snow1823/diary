@@ -26,29 +26,35 @@ jobs:
         with:
           commit_message: Apply CI Prettier Change
 
-  api:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup Docker
-        shell: bash
-        run: |
-          docker-compose build
-          docker-compose up -d
-        env:
-          RAILS_ENV: test
+api:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v2
+    - name: Setup Docker
+      shell: bash
+      run: |
+        docker-compose build
+        docker-compose up -d
+      env:
+        RAILS_ENV: test
 
-      - name: Run Rubocop
-        shell: bash
-        run: |
-          docker-compose run api bundle exec rubocop
-        env:
-          RAILS_ENV: test
+    - name: Wait for MySQL
+      run: |
+        while ! docker-compose exec -T db mysqladmin ping --silent; do
+          sleep 1
+        done
 
-      - name: Run RSpec
-        shell: bash
-        run: |
-          docker-compose run api bundle exec rspec
-        env:
-          RAILS_ENV: test
-# 動くかテスト
+    - name: Run Rubocop
+      shell: bash
+      run: |
+        docker-compose run api bundle exec rubocop
+      env:
+        RAILS_ENV: test
+
+    - name: Run RSpec
+      shell: bash
+      run: |
+        docker-compose run api bundle exec rspec
+      env:
+        RAILS_ENV: test
+
