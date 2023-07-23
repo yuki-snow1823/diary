@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { getCurrentUser } from './lib/api/auth'
 import { createContext, useEffect, useState } from 'react'
 import { NewJournalContainer } from './journal/component/NewJournalContainer'
+import { JournalDetailContainer } from './journal/show/component/JournalDetailContainer '
 
 export interface User {
   id: number
@@ -79,6 +80,7 @@ function App() {
           <Routes>
             <Route path="/sign_in" element={<SignInContainer />} />
             <Route path="/journal/new" element={<NewJournalContainer />} />
+            <Route path="/journal/1" element={<JournalDetailContainer />} />
           </Routes>
         </ApolloProvider>
       </BrowserRouter>
