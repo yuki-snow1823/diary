@@ -52,5 +52,3 @@ jobs:
           docker-compose run api bundle exec rspec
         env:
           RAILS_ENV: test
-        env:
-          RAILS_ENV: test
