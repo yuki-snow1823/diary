@@ -10,7 +10,7 @@ while true; do
     rails db:create
     echo "Start Migration..."
     rails db:migrate
-    echo "Start Seed..."
+    echo "Creating Seed data..."
     rails db:seed
   fi
 
