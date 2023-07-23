@@ -6,11 +6,11 @@ module Mutations
     argument :content, String, required: true
     argument :user_id, Integer, required: true
 
-    def resolve(title:, content:, user_id:)
+    def resolve(user_id:, title:, content:)
       journal = Journal.create!({
+                                  user_id:,
                                   title:,
-                                  content:,
-                                  user_id:
+                                  content:
                                 })
 
       {
