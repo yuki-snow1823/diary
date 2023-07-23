@@ -30,22 +30,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Docker
+      - name: Setup Docker and DB
         shell: bash
         run: |
           docker-compose build
           docker-compose up -d
-        env:
-          RAILS_ENV: test
-
-      - name: Wait for MySQL
-        run: |
           while ! docker-compose exec -T db mysqladmin ping --silent; do
             sleep 1
           done
-
-      - name: Setup DB
-        run: |
           docker-compose run api bundle exec rails db:create db:schema:load
         env:
           RAILS_ENV: test
