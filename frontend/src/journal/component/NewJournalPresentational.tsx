@@ -28,7 +28,7 @@ const NewJournalPresentational: React.FC<Props> = (props) => {
           label="タイトル"
           variant="outlined"
           value={title}
-          onChange={e => setTitle(e.target.value)}
+          onChange={(e) => setTitle(e.target.value)}
           sx={{ mt: 2 }}
         />
         <TextField
@@ -38,12 +38,12 @@ const NewJournalPresentational: React.FC<Props> = (props) => {
           multiline
           rows={4}
           value={content}
-          onChange={e => setContent(e.target.value)}
+          onChange={(e) => setContent(e.target.value)}
           sx={{ mt: 2 }}
         />
-        <Button 
-          variant="contained" 
-          color="primary" 
+        <Button
+          variant="contained"
+          color="primary"
           onClick={handleSubmit}
           sx={{ mt: 3 }}
         >
