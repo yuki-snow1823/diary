@@ -11,7 +11,6 @@ type Props = {
 }
 
 const NewJournalPresentational: React.FC<Props> = (props) => {
-
   return (
     <Container maxWidth="sm">
       <Box sx={{ mt: 8 }}>

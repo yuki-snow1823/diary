@@ -4,7 +4,6 @@ import { useContext, useState } from 'react'
 import { AuthContext } from '../../../App'
 import NewJournalPresentational from './JournalNewPresentational'
 
-
 export const NewJournalContainer = () => {
   const { currentUser } = useContext(AuthContext)
   const [createJournal] = useMutation(CREATE_JOURNAL)
@@ -28,7 +27,6 @@ export const NewJournalContainer = () => {
       console.log(err)
     }
   }
-  
 
   return (
     <NewJournalPresentational
