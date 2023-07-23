@@ -43,7 +43,7 @@ RSpec.describe Mutations::UpdateJournal do
   end
 
   context 'journalIdにDBに存在しない値が指定された場合' do
-    let(:journal_id) { Journal.maximum(:id) + 1 }
+    let(:journal_id) { Journal.last&.id.to_i + 1 }
     it 'journalが更新されずエラーが発生する' do
       expect(result['errors'].first['message']).to be_present
     end
