@@ -34,24 +34,24 @@ jobs:
         shell: bash
         run: |
           docker-compose build
-          docker-compose up -d
-          while ! docker-compose exec -T db mysqladmin ping --silent; do
-            sleep 1
-          done
+          docker-compose up -d db
+          sleep 15
+          docker-compose exec -T db mysqladmin ping --silent
           docker-compose run api bundle exec rails db:create db:schema:load
         env:
           RAILS_ENV: test
-
       - name: Run Rubocop
         shell: bash
         run: |
           docker-compose run api bundle exec rubocop
         env:
           RAILS_ENV: test
-
       - name: Run RSpec
         shell: bash
         run: |
+          docker-compose run api bundle exec rspec
+        env:
+          RAILS_ENV: test
           docker-compose run api bundle exec rspec
         env:
           RAILS_ENV: test
