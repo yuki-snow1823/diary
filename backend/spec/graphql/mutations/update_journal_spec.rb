@@ -17,35 +17,35 @@ RSpec.describe Mutations::UpdateJournal do
     }
   MUTATION
 
-  let(:journal_id) { journal.id }
   let(:title) { 'updated_title' }
   let(:content) { 'updated_content' }
 
-  # 引数を渡すためにlambdaを使うのが正しいのかどうかは議論の余地があると思う
   let(:result) do
-    lambda { |journal_id|
-      BackendSchema.execute(
-        mutation,
-        variables: {
-          journalId: journal_id,
-          title:,
-          content:
-        }
-      )
-    }
+    BackendSchema.execute(
+      mutation,
+      variables: {
+        journalId: journal_id,
+        title:,
+        content:
+      }
+    )
   end
 
-  # TODO: 本当はcontextログイン時などを設定したい
-  # lambdaを使っているので毎回callする必要がある
-  it 'journal_id, title, contentが全て入力されたときjournalが更新できる' do
-    expect(result.call(journal_id).dig('data', 'updateJournal', 'journal', 'id')).to eq(journal_id.to_s)
-    expect(result.call(journal_id).dig('data', 'updateJournal', 'journal', 'title')).to eq(title)
-    expect(result.call(journal_id).dig('data', 'updateJournal', 'journal', 'content')).to eq(content)
+  # TODO: 本当はcontextログイン時なども設定したい
+  context '全ての引数に有効な値が設定された場合' do
+    let(:journal_id) { journal.id }
+    it 'journalが更新できる' do
+      journal = Journal.find(journal_id)
+      expect { result }.to change {
+        [journal.reload.title, journal.reload.content]
+      }.from([journal.title, journal.content]).to([title, content])
+    end
   end
 
-  # lambdaを使っているので毎回callする必要がある
-  it 'journalIdにDBに存在しない値が指定された時にjournalが更新されずエラーが発生する' do
-    not_exist_journal_id = Journal.last.id + 1
-    expect(result.call(not_exist_journal_id)['errors'].first['message']).to be_present
+  context 'journalIdにDBに存在しない値が指定された場合' do
+    let(:journal_id) { Journal.maximum(:id) + 1 }
+    it 'journalが更新されずエラーが発生する' do
+      expect(result['errors'].first['message']).to be_present
+    end
   end
 end
