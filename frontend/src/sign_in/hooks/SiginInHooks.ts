@@ -1,7 +1,7 @@
 import { ChangeEvent, useState, useContext } from 'react'
 import Cookies from 'js-cookie'
-import { AuthContext } from '../../App'
-import { signIn } from '../../lib/api/auth'
+import { AuthContext } from 'App'
+import { signIn } from 'lib/api/auth'
 
 export interface SignInParams {
   email: string
