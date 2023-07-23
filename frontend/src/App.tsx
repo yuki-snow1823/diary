@@ -1,8 +1,8 @@
-import './App.css'
+import 'App.css'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
-import { SignInContainer } from './sign_in/component/SignInContainer'
+import { SignInContainer } from 'sign_in/component/SignInContainer'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { getCurrentUser } from './lib/api/auth'
+import { getCurrentUser } from 'lib/api/auth'
 import { createContext, useEffect, useState } from 'react'
 
 export interface User {
@@ -76,7 +76,7 @@ function App() {
       <BrowserRouter>
         <ApolloProvider client={client}>
           <Routes>
-            <Route path="/sign_in" element={<SignInContainer />} />
+            <Route path="/" element={<SignInContainer />} />
           </Routes>
         </ApolloProvider>
       </BrowserRouter>
