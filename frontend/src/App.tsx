@@ -76,7 +76,7 @@ function App() {
       <BrowserRouter>
         <ApolloProvider client={client}>
           <Routes>
-            <Route path="/sign_in" element={<SignInContainer />} />
+            <Route path="/" element={<SignInContainer />} />
           </Routes>
         </ApolloProvider>
       </BrowserRouter>
