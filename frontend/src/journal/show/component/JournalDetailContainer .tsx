@@ -4,9 +4,11 @@ import { Link, useParams } from 'react-router-dom'
 
 export const JournalDetailContainer = () => {
   const urlParams = useParams<{ id: string }>()
-  const { loading, error, data } = useQuery(FIND_JOURNAL, { variables: { id: urlParams.id } })
-	if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error! {error.message}</p>;
+  const { loading, error, data } = useQuery(FIND_JOURNAL, {
+    variables: { id: urlParams.id }
+  })
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error! {error.message}</p>
   console.log(data.journal.title)
   return (
     <>
