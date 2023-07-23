@@ -26,13 +26,13 @@ export const JournalNewHooks = () => {
       console.log(err)
     }
   }
-  
+
   return {
     handleCreateJournal,
     setTitle,
     setContent,
     title,
     content,
-    currentUser,
+    currentUser
   }
 }
