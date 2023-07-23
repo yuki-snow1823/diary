@@ -44,6 +44,12 @@ jobs:
             sleep 1
           done
 
+      - name: Setup DB
+        run: |
+          docker-compose run api bundle exec rails db:create db:schema:load
+        env:
+          RAILS_ENV: test
+
       - name: Run Rubocop
         shell: bash
         run: |
