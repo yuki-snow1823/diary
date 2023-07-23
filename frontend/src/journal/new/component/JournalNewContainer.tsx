@@ -1,7 +1,7 @@
 import { JournalNewHooks } from '../hooks/JournalNewHooks'
 import NewJournalPresentational from './JournalNewPresentational'
 
-export const NewJournalContainer = () => {
+export const JournalNewContainer = () => {
   const {
     currentUser,
     title,
