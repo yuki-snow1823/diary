@@ -10,6 +10,8 @@ while true; do
     rails db:create
     echo "Start Migration..."
     rails db:migrate
+    echo "Start Seed..."
+    rails db:seed
   fi
 
   if rails db:version >/dev/null 2>&1; then
