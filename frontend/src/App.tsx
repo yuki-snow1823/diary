@@ -4,8 +4,9 @@ import { SignInContainer } from 'sign_in/component/SignInContainer'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { getCurrentUser } from 'lib/api/auth'
 import { createContext, useEffect, useState } from 'react'
-import { NewJournalContainer } from './journal/component/NewJournalContainer'
+
 import { JournalDetailContainer } from './journal/show/component/JournalDetailContainer '
+import { JournalNewContainer } from 'journal/new/component/JournalNewContainer'
 
 export interface User {
   id: number
@@ -79,7 +80,7 @@ function App() {
         <ApolloProvider client={client}>
           <Routes>
             <Route path="/sign_in" element={<SignInContainer />} />
-            <Route path="/journal/new" element={<NewJournalContainer />} />
+            <Route path="/journal/new" element={<JournalNewContainer />} />
             <Route path="/journal/:id" element={<JournalDetailContainer />} />
           </Routes>
         </ApolloProvider>
