@@ -1,5 +1,10 @@
 import React from 'react'
 import { User } from '../../App'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import Container from '@mui/material/Container'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 
 type Props = {
   currentUser: User | undefined
@@ -12,42 +17,49 @@ type Props = {
 
 const SignInPresentational: React.FC<Props> = (props) => {
   return (
-    <>
-      <form>
+    <Container maxWidth="sm">
+      <Box sx={{ my: 4 }}>
         {props.currentUser ? (
-          <h2>{props.currentUser.email}でログインしてるよ</h2>
-        ) : (
-          ''
-        )}
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            value={props.email}
-            onChange={props.handleEmailChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            value={props.password}
-            onChange={props.handlePasswordChange}
-            required
-          />
-        </div>
-        <button
-          onClick={props.handleSubmit}
-          type="button"
+          <Typography variant="h4" component="h2" gutterBottom>
+            {props.currentUser.email}
+            <br />
+            でログインしてるよ
+          </Typography>
+        ) : null}
+
+        <TextField
+          fullWidth
+          margin="normal"
+          id="email"
+          type="email"
+          label="Email"
+          value={props.email}
+          onChange={props.handleEmailChange}
+          required
+        />
+
+        <TextField
+          fullWidth
+          margin="normal"
+          id="password"
+          type="password"
+          label="Password"
+          value={props.password}
+          onChange={props.handlePasswordChange}
+          required
+        />
+
+        <Button
+          fullWidth
+          variant="contained"
+          color="primary"
           disabled={!props.email || !props.password}
+          onClick={props.handleSubmit}
         >
-          Submit
-        </button>
-      </form>
-    </>
+          Sign In
+        </Button>
+      </Box>
+    </Container>
   )
 }
 
