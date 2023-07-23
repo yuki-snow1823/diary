@@ -1,6 +1,7 @@
 import { User } from '../../App'
 import { useState } from 'react'
 import { TextField, Button, Box, Container, Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 type Props = {
   currentUser: User | undefined
@@ -50,6 +51,7 @@ const NewJournalPresentational: React.FC<Props> = (props) => {
           投稿
         </Button>
       </Box>
+      <Link to="/journal/1">journal 1</Link>
     </Container>
   )
 }

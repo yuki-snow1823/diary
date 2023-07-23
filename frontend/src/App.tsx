@@ -80,7 +80,7 @@ function App() {
           <Routes>
             <Route path="/sign_in" element={<SignInContainer />} />
             <Route path="/journal/new" element={<NewJournalContainer />} />
-            <Route path="/journal/1" element={<JournalDetailContainer />} />
+            <Route path="/journal/:id" element={<JournalDetailContainer />} />
           </Routes>
         </ApolloProvider>
       </BrowserRouter>
