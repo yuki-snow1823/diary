@@ -1,0 +1,11 @@
+id,name,nickname,email,password
+1,user1,user1(nickname),example_1@example.com,password
+2,user2,user2(nickname),example_2@example.com,password
+3,user3,user3(nickname),example_3@example.com,password
+4,user4,user4(nickname),example_4@example.com,password
+5,user5,user5(nickname),example_5@example.com,password
+6,user6,user6(nickname),example_6@example.com,password
+7,user7,user7(nickname),example_7@example.com,password
+8,user8,user8(nickname),example_8@example.com,password
+9,user9,user9(nickname),example_9@example.com,password
+10,user10,user10(nickname),example_10@example.com,password
