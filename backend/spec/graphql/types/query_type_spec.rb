@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Types::QueryType do
   describe 'journals' do
+    let!(:journals) { create_list(:journal, 3) }
+
     let(:query) do
       <<~QUERY
-        query {
+        query GetAllJournals {
           journals {
             id
             title
@@ -31,7 +33,7 @@ RSpec.describe Types::QueryType do
 
     let(:query) do
       <<~QUERY
-        query ($id: ID!) {
+        query GetJornal($id: ID!) {
           journal(id: $id) {
             id
             title
