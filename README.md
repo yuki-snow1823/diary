@@ -12,6 +12,8 @@ Diary
 `docker-compose up`でバックエンドのAPIを起動することができます。
 その後、frontendのディレクトリで`yarn install && yarn start`を実行してください。
 
+dockerやyarnの環境がない方はbrew等を使ってセットアップをお願いします。
+
 ## 開発の手引きやアプリの説明
 WIKIをご覧ください👍
 https://github.com/yuki-snow1823/diary/wiki/
