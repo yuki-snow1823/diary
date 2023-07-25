@@ -24,7 +24,7 @@ RSpec.describe Types::QueryType do
     end
 
     it '全てのjournalを取得できる' do
-      expect(result.dig('data', 'journals').size).to eq(Journal.all.count)
+      expect(result.dig('data', 'journals').size).to eq(Journal.count)
     end
   end
 
