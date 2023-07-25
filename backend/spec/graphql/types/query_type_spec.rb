@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Types::QueryType do
   describe 'journals' do
-    let!(:journals) { create_list(:journal, 3) }
+    before do
+      create_list(:journal, 3)
+    end
 
     let(:query) do
       <<~QUERY
@@ -22,8 +24,7 @@ RSpec.describe Types::QueryType do
     end
 
     it '全てのjournalを取得できる' do
-      count_all_journals = Journal.all.count
-      expect(result.dig('data', 'journals').size).to eq(count_all_journals)
+      expect(result.dig('data', 'journals').size).to eq(Journal.all.count)
     end
   end
 
