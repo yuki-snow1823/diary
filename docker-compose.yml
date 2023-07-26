@@ -19,7 +19,6 @@ services:
       - ./backend:/sample
     environment:
       TZ: Asia/Tokyo
-      RAILS_ENV: development
       GITHUB_ACTIONS: "${GITHUB_ACTIONS:-false}"
     ports:
       - 3000:3000
