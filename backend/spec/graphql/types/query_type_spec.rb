@@ -26,6 +26,16 @@ RSpec.describe Types::QueryType do
     it '全てのjournalを取得できる' do
       expect(result.dig('data', 'journals').size).to eq(Journal.count)
     end
+
+    it '任意のjournalについてモデルと一致する内容を取得できる' do
+      random_journal = Journal.all.sample
+      expect(result.dig('data', 'journals').find { |journal| journal['id'] == random_journal.id.to_s }).to eq(
+        'id' => random_journal.id.to_s,
+        'title' => random_journal.title,
+        'content' => random_journal.content,
+        'userId' => random_journal.user_id
+      )
+    end
   end
 
   describe 'journal' do
