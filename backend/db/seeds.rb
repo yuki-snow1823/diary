@@ -15,8 +15,6 @@ CSV.foreach('db/seeds_csv/user.csv', headers: true) do |row|
     name: row['name'],
     nickname: row['nickname'],
     email: row['email'],
-    created_at: Time.now,
-    updated_at: Time.now,
   }
   user_count += 1
 end
