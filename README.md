@@ -79,3 +79,6 @@ frontend/
 			├ button.tsx
 			├ ...
 ```
+
+## テストデータを増やしたい時
+推奨機能の[EditCSV](https://1-notes.com/visual-studio-code-edit-csv/)をインストールして`/backend/db/seeds_csv`を編集してください。
