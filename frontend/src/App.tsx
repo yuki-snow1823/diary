@@ -1,9 +1,9 @@
-import 'App.css'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 import { SignInContainer } from 'sign_in/component/SignInContainer'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { getCurrentUser } from 'lib/api/auth'
 import { createContext, useEffect, useState } from 'react'
+import { JournalNewContainer } from './journal/new/component/JournalNewContainer'
 
 export interface User {
   id: number
@@ -19,7 +19,7 @@ export interface User {
 }
 
 const client = new ApolloClient({
-  uri: 'https://tdiaryapi.herokuapp.com/graphql',
+  uri: 'http://localhost:3000/graphql',
   cache: new InMemoryCache()
 })
 
@@ -77,6 +77,7 @@ function App() {
         <ApolloProvider client={client}>
           <Routes>
             <Route path="/" element={<SignInContainer />} />
+            <Route path="/journal/new" element={<JournalNewContainer />} />
           </Routes>
         </ApolloProvider>
       </BrowserRouter>
