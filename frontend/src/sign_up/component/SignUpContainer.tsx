@@ -12,7 +12,7 @@ export const SignUpContainer = () => {
     name,
     email,
     password,
-    passwordConfirmation,
+    passwordConfirmation
   } = SignUpHooks()
 
   return (
