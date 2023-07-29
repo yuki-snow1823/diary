@@ -75,7 +75,11 @@ const SignUpPresentational: React.FC<Props> = (props) => {
           fullWidth
           variant="contained"
           color="primary"
-          disabled={!props.email || !props.password || props.password !== props.passwordConfirmation}
+          disabled={
+            !props.email ||
+            !props.password ||
+            props.password !== props.passwordConfirmation
+          }
           onClick={props.handleSubmit}
         >
           Sign Up
