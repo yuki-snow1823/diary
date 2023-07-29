@@ -4,7 +4,6 @@ import { AuthContext } from 'App'
 import { signUp } from 'lib/api/auth'
 import { SignUpParams } from 'lib/api/auth'
 
-
 export const SignUpHooks = () => {
   const [name, setName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
