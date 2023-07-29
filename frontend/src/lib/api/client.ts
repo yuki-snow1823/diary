@@ -5,10 +5,19 @@ const options = {
   ignoreHeaders: true
 }
 
-// TODO: 本番環境でも動くようにする
+let baseURL: string
+
+const productionHost = process.env.REACT_APP_PRODUCTION_HOST || '';
+
+if (window.location.host === productionHost) {
+  baseURL = process.env.REACT_APP_API_ENDPOINT || '';
+} else {
+  baseURL = 'http://localhost:3000/';
+}
+
 const client = applyCaseMiddleware(
   axios.create({
-    baseURL: 'http://localhost:3000/'
+    baseURL: baseURL
   }),
   options
 )
