@@ -10,7 +10,7 @@ let baseURL: string
 const productionHost = process.env.REACT_APP_PRODUCTION_HOST || ''
 
 if (window.location.host === productionHost) {
-  baseURL = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:3000/';
+  baseURL = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:3000/'
 } else {
   baseURL = 'http://localhost:3000/'
 }
