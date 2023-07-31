@@ -79,7 +79,7 @@ function App() {
         <ApolloProvider client={client}>
           <Routes>
             <Route path="/sign_in" element={<SignInContainer />} />
-            <Route path='/journals' element={<IndexJournalContainer />} />
+            <Route path="/journals" element={<IndexJournalContainer />} />
             <Route path="/journal/new" element={<NewJournalContainer />} />
           </Routes>
         </ApolloProvider>
