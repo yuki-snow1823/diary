@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { getCurrentUser } from 'lib/api/auth'
 import { createContext, useEffect, useState } from 'react'
 import { JournalNewContainer } from './journal/new/component/JournalNewContainer'
-
+import { IndexUserContainer } from './user/index/component/IndexUserContainer'
 export interface User {
   id: number
   uid: string
@@ -78,6 +78,7 @@ function App() {
           <Routes>
             <Route path="/" element={<SignInContainer />} />
             <Route path="/journal/new" element={<JournalNewContainer />} />
+            <Route path="/users" element={<IndexUserContainer />} />
           </Routes>
         </ApolloProvider>
       </BrowserRouter>
