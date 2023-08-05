@@ -31,7 +31,7 @@ export const IndexUserPresentational: React.FC<Props> = (props) => {
               </tr>
             </thead>
             <tbody>
-            {users.map((user) => (
+              {users.map((user) => (
                 <tr>
                   <td>{user.id}</td>
                   <td>{user.name}</td>
