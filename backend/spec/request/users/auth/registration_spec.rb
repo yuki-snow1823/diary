@@ -11,6 +11,10 @@ RSpec.describe 'Users::Auth::Registrations', type: :request do
       }
     end
 
+    def do_request
+      post user_registration_path, params:
+    end
+
     context '登録に必要な情報がある場合' do
       it 'ユーザー登録ができる' do
         post user_registration_path, params: valid_attributes
