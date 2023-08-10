@@ -14,8 +14,8 @@ RSpec.describe 'Users::Auth::Registrations', type: :request do
     context '登録に必要な情報がある場合' do
       it 'ユーザー登録ができる' do
         post user_registration_path, params: valid_attributes
-        expect(User.count).to eq 1
-        expect(User.first.name).to eq 'test'
+        expect { do_request }.to change(User, :count).by(1)
+        expect(User.sole).to have_attributes(name: 'test', email: 'test@example.com')
         expect(response).to have_http_status(:ok)
       end
     end
