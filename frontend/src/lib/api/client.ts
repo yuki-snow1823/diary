@@ -1,16 +1,19 @@
-import applyCaseMiddleware from 'axios-case-converter'
-import axios from 'axios'
+import applyCaseMiddleware from 'axios-case-converter';
+import axios from 'axios';
 
 const options = {
   ignoreHeaders: true
-}
+};
 
-// TODO: 本番環境でも動くようにする
+const baseURL = process.env.NODE_ENV === 'production' 
+  ? process.env.REACT_APP_API_ENDPOINT
+  : 'http://localhost:3000/';
+
 const client = applyCaseMiddleware(
   axios.create({
-    baseURL: 'http://localhost:3000/'
+    baseURL: baseURL
   }),
   options
-)
+);
 
-export default client
+export default client;
