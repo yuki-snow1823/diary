@@ -3,7 +3,7 @@ import { SignInContainer } from 'sign_in/component/SignInContainer'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { getCurrentUser } from 'lib/api/auth'
 import { createContext, useEffect, useState } from 'react'
-import { JournalNewContainer } from './journal/new/component/JournalNewContainer'
+import { JournalNewContainer } from './journal/new/component/NewJournalContainer'
 
 export interface User {
   id: number
