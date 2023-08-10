@@ -1,22 +1,16 @@
-import { User } from '../../App'
-import { useState } from 'react'
+import { User } from '../../../App'
 import { TextField, Button, Box, Container, Typography } from '@mui/material'
 
 type Props = {
   currentUser: User | undefined
-  handleCreateJournal: (title: string, content: string) => Promise<void>
+  title: string
+  content: string
+  setTitle: React.Dispatch<React.SetStateAction<string>>
+  setContent: React.Dispatch<React.SetStateAction<string>>
+  handleCreateJournal: () => Promise<void>
 }
 
 const NewJournalPresentational: React.FC<Props> = (props) => {
-  const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
-
-  const handleSubmit = () => {
-    props.handleCreateJournal(title, content)
-    setTitle('')
-    setContent('')
-  }
-
   return (
     <Container maxWidth="sm">
       <Box sx={{ mt: 8 }}>
@@ -27,8 +21,8 @@ const NewJournalPresentational: React.FC<Props> = (props) => {
           fullWidth
           label="タイトル"
           variant="outlined"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={props.title}
+          onChange={(e) => props.setTitle(e.target.value)}
           sx={{ mt: 2 }}
         />
         <TextField
@@ -37,14 +31,14 @@ const NewJournalPresentational: React.FC<Props> = (props) => {
           variant="outlined"
           multiline
           rows={4}
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
+          value={props.content}
+          onChange={(e) => props.setContent(e.target.value)}
           sx={{ mt: 2 }}
         />
         <Button
           variant="contained"
           color="primary"
-          onClick={handleSubmit}
+          onClick={props.handleCreateJournal}
           sx={{ mt: 3 }}
         >
           投稿

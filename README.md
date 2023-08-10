@@ -12,16 +12,16 @@ Diary
 `docker-compose up`でバックエンドのAPIを起動することができます。
 その後、frontendのディレクトリで`yarn install && yarn start`を実行してください。
 
-## 使用方法
+dockerやyarnの環境がない方はbrew等を使ってセットアップをお願いします。
 
-工事中
-最初に見るべきページや、重要な処理、ドキュメントの解説なども追記します。
+## 開発の手引きやアプリの説明
+WIKIをご覧ください👍
+https://github.com/yuki-snow1823/diary/wiki/
 
 ## テスト方法
 
 Github Actions で push した際に自動テストが実行されるようになっています。
-ローカルでの実行方法は工事中です。
-
+ローカルでは、バックエンドは` docker-compose run api bundle exec rspec s`でフロントエンドは`yarn run test`で実行できます。
 ## インフラ構成図
 
 ```mermaid
@@ -79,3 +79,6 @@ frontend/
 			├ button.tsx
 			├ ...
 ```
+
+## テストデータを増やしたい時
+推奨機能の[EditCSV](https://1-notes.com/visual-studio-code-edit-csv/)をインストールして`/backend/db/seeds_csv`を編集してください。
