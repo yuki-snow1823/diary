@@ -14,7 +14,7 @@ RSpec.describe 'Users::Auth::Registrations', type: :request do
     let(:invalid_attributes) { valid_attributes.merge(email: '') }
 
     def do_request
-      post user_registration_path, params:
+      post user_registration_path, params: { registration: params }
     end
 
     context 'メールアドレスがある場合' do
