@@ -72,7 +72,7 @@ RSpec.describe Types::QueryType do
   describe 'user_journals' do
     let(:user) { create(:user) }
     let(:user_id) { user.id }
-    let(:journals) { create_list(:journal, 3, user:) }
+    let!(:journals) { create_list(:journal, 3, user:) }
 
     let(:query) do
       <<~QUERY
