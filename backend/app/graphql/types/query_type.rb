@@ -9,12 +9,20 @@ module Types
       argument :id, ID, required: true
     end
 
+    field :user_journals, [Types::JournalType], null: false do
+      argument :user_id, ID, required: true
+    end
+
     def journals
       Journal.all
     end
 
     def journal(id:)
       Journal.find(id)
+    end
+
+    def user_journals(user_id:)
+      Journal.where(user_id:)
     end
   end
 end
