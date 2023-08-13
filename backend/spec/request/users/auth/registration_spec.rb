@@ -11,21 +11,27 @@ RSpec.describe 'Users::Auth::Registrations', type: :request do
       }
     end
 
-    context '登録に必要な情報がある場合' do
+    let(:invalid_attributes) { valid_attributes.merge(email: '') }
+
+    def do_request
+      post user_registration_path, params:
+    end
+
+    context 'メールアドレスがある場合' do
+      let(:params) { valid_attributes }
+
       it 'ユーザー登録ができる' do
-        post user_registration_path, params: valid_attributes
-        expect(User.count).to eq 1
-        expect(User.first.name).to eq 'test'
+        expect { do_request }.to change(User, :count).by(1)
+        expect(User.sole).to have_attributes(name: 'test', email: 'test@example.com')
         expect(response).to have_http_status(:ok)
       end
     end
 
-    context '登録に必要な情報がない場合' do
-      let(:invalid_attributes) { valid_attributes.merge(email: '') }
+    context 'メールアドレスが空の場合' do
+      let(:params) { invalid_attributes }
 
       it 'ユーザー登録ができない' do
-        post user_registration_path, params: invalid_attributes
-        expect(User.count).to eq 0
+        expect { do_request }.not_to change(User, :count)
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
