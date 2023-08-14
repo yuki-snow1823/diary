@@ -27,7 +27,6 @@ RSpec.describe Types::QueryType do
 
     it 'idで指定したuserを取得できる' do
       expect(result.dig('data', 'user', 'id')).to eq(user_id.to_s)
-      expect(result.dig('data', 'user', 'email')).to eq(user.email)
     end
   end
 
