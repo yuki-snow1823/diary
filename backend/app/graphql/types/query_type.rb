@@ -4,6 +4,8 @@ module Types
     include GraphQL::Types::Relay::HasNodesField
 
     field :user, Types::UserType, null: false do
+      argument :id, ID, required: true
+    end
 
     field :journals, [Types::JournalType], null: false
 
@@ -16,7 +18,7 @@ module Types
     end
 
     def user(id:)
-      User.find(id:)
+      User.find(id)
     end
 
     def journals
