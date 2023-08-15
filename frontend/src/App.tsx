@@ -19,10 +19,20 @@ export interface User {
   updated_at: Date
 }
 
+let baseURL: string;
+
+const productionHost = process.env.REACT_APP_PRODUCTION_HOST || '';
+
+if (window.location.host === productionHost) {
+  baseURL = (process.env.REACT_APP_API_ENDPOINT || 'http://localhost:3000') + '/graphql';
+} else {
+  baseURL = 'http://localhost:3000/graphql';
+}
+
 const client = new ApolloClient({
-  uri: 'http://localhost:3000/graphql',
+  uri: baseURL,
   cache: new InMemoryCache()
-})
+});
 
 export const AuthContext = createContext(
   {} as {
