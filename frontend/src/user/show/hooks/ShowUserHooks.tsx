@@ -4,6 +4,6 @@ import { AuthContext } from 'App'
 export const ShowUserHooks = () => {
   const { currentUser } = useContext(AuthContext)
   return {
-    currentUser,
+    currentUser
   }
 }
