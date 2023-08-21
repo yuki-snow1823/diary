@@ -9,7 +9,7 @@ type Props = {
 }
 
 const ShowUserPresentational: React.FC<Props> = ({ user }) => {
-  console.log(user, "あああ")
+  console.log(user, 'あああ')
   if (!user) {
     return (
       <Container maxWidth="sm">
