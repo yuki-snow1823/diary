@@ -5,6 +5,7 @@ import { getCurrentUser } from 'lib/api/auth'
 import { createContext, useEffect, useState } from 'react'
 import { JournalNewContainer } from './journal/new/component/JournalNewContainer'
 import { SignUpContainer } from './sign_up/component/SignUpContainer'
+import { ShowUserContainer } from 'user/show/component/ShowUserContainer'
 
 export interface User {
   id: number
@@ -80,6 +81,7 @@ function App() {
             <Route path="/" element={<SignInContainer />} />
             <Route path="/sign_up" element={<SignUpContainer />} />
             <Route path="/journal/new" element={<JournalNewContainer />} />
+            <Route path="/user/:user_id" element={<ShowUserContainer />} />
           </Routes>
         </ApolloProvider>
       </BrowserRouter>
