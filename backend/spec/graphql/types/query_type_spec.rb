@@ -1,6 +1,35 @@
 require 'rails_helper'
 
 RSpec.describe Types::QueryType do
+  describe 'user' do
+    let(:user) { create(:user) }
+    let(:user_id) { user.id }
+
+    let(:query) do
+      <<~QUERY
+        query GetJornal($id: ID!) {
+          user(id: $id) {
+            id
+            email
+          }
+        }
+      QUERY
+    end
+
+    let(:result) do
+      BackendSchema.execute(
+        query,
+        variables: {
+          id: user_id
+        }
+      )
+    end
+
+    it 'idで指定したuserを取得できる' do
+      expect(result.dig('data', 'user', 'id')).to eq(user_id.to_s)
+    end
+  end
+
   describe 'journals' do
     let!(:journal1) { create(:journal, title: 'タイトル1', content: '内容1') }
     let!(:journal2) { create(:journal, title: 'タイトル2', content: '内容2') }
