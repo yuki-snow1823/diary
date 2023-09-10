@@ -14,7 +14,7 @@ module Types
     end
 
     def journals
-      Journal.all
+      Journal.order(:id)
     end
 
     def journal(id:)
