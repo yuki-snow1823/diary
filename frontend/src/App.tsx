@@ -5,6 +5,8 @@ import { getCurrentUser } from 'lib/api/auth'
 import { createContext, useEffect, useState } from 'react'
 import { NewJournalContainer } from './journal/new/component/NewJournalContainer'
 import { SignUpContainer } from './sign_up/component/SignUpContainer'
+import { ThemeProvider, createTheme } from '@mui/material/styles'
+
 export interface User {
   id: number
   uid: string
@@ -50,6 +52,15 @@ function App() {
   const [isSignedIn, setIsSignedIn] = useState<boolean>(false)
   const [currentUser, setCurrentUser] = useState<User | undefined>()
 
+  const theme = createTheme({
+    typography: {
+      fontFamily: 'Noto Sans JP',
+      button: {
+        textTransform: 'none'
+      }
+    }
+  })
+
   const handleGetCurrentUser = async () => {
     try {
       const res = await getCurrentUser()
@@ -74,26 +85,28 @@ function App() {
   }, [])
 
   return (
-    <AuthContext.Provider
-      value={{
-        loading,
-        setLoading,
-        isSignedIn,
-        setIsSignedIn,
-        currentUser,
-        setCurrentUser
-      }}
-    >
-      <BrowserRouter>
-        <ApolloProvider client={client}>
-          <Routes>
-            <Route path="/" element={<SignInContainer />} />
-            <Route path="/sign_up" element={<SignUpContainer />} />
-            <Route path="/journal/new" element={<NewJournalContainer />} />
-          </Routes>
-        </ApolloProvider>
-      </BrowserRouter>
-    </AuthContext.Provider>
+    <ThemeProvider theme={theme}>
+      <AuthContext.Provider
+        value={{
+          loading,
+          setLoading,
+          isSignedIn,
+          setIsSignedIn,
+          currentUser,
+          setCurrentUser
+        }}
+      >
+        <BrowserRouter>
+          <ApolloProvider client={client}>
+            <Routes>
+              <Route path="/" element={<SignInContainer />} />
+              <Route path="/sign_up" element={<SignUpContainer />} />
+              <Route path="/journal/new" element={<NewJournalContainer />} />
+            </Routes>
+          </ApolloProvider>
+        </BrowserRouter>
+      </AuthContext.Provider>
+    </ThemeProvider>
   )
 }
 
