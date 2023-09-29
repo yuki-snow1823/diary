@@ -1,11 +1,12 @@
-import 'App.css'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 import { SignInContainer } from 'sign_in/component/SignInContainer'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { getCurrentUser } from 'lib/api/auth'
 import { createContext, useEffect, useState } from 'react'
-import { JournalNewContainer } from './journal/new/component/JournalNewContainer'
 import { JournalDetailContainer } from 'journal/show/component/JournalDetailContainer '
+import { NewJournalContainer } from './journal/new/component/NewJournalContainer'
+import { SignUpContainer } from './sign_up/component/SignUpContainer'
+import { ThemeProvider, createTheme } from '@mui/material/styles'
 
 export interface User {
   id: number
@@ -20,8 +21,19 @@ export interface User {
   updated_at: Date
 }
 
+let baseURL: string
+
+const productionHost = process.env.REACT_APP_PRODUCTION_HOST || ''
+
+if (window.location.host === productionHost) {
+  baseURL =
+    (process.env.REACT_APP_API_ENDPOINT || 'http://localhost:3000') + '/graphql'
+} else {
+  baseURL = 'http://localhost:3000/graphql'
+}
+
 const client = new ApolloClient({
-  uri: 'http://localhost:3000/graphql',
+  uri: baseURL,
   cache: new InMemoryCache()
 })
 
@@ -40,6 +52,15 @@ function App() {
   const [loading, setLoading] = useState<boolean>(true)
   const [isSignedIn, setIsSignedIn] = useState<boolean>(false)
   const [currentUser, setCurrentUser] = useState<User | undefined>()
+
+  const theme = createTheme({
+    typography: {
+      fontFamily: 'Noto Sans JP',
+      button: {
+        textTransform: 'none'
+      }
+    }
+  })
 
   const handleGetCurrentUser = async () => {
     try {
@@ -65,26 +86,29 @@ function App() {
   }, [])
 
   return (
-    <AuthContext.Provider
-      value={{
-        loading,
-        setLoading,
-        isSignedIn,
-        setIsSignedIn,
-        currentUser,
-        setCurrentUser
-      }}
-    >
-      <BrowserRouter>
-        <ApolloProvider client={client}>
-          <Routes>
-            <Route path="/sign_in" element={<SignInContainer />} />
-            <Route path="/journal/new" element={<JournalNewContainer />} />
-            <Route path="/journal/:id" element={<JournalDetailContainer />} />
-          </Routes>
-        </ApolloProvider>
-      </BrowserRouter>
-    </AuthContext.Provider>
+    <ThemeProvider theme={theme}>
+      <AuthContext.Provider
+        value={{
+          loading,
+          setLoading,
+          isSignedIn,
+          setIsSignedIn,
+          currentUser,
+          setCurrentUser
+        }}
+      >
+        <BrowserRouter>
+          <ApolloProvider client={client}>
+            <Routes>
+              <Route path="/" element={<SignInContainer />} />
+              <Route path="/sign_up" element={<SignUpContainer />} />
+              <Route path="/journal/new" element={<NewJournalContainer />} />
+              <Route path="/journal/:id" element={<JournalDetailContainer />} />
+            </Routes>
+          </ApolloProvider>
+        </BrowserRouter>
+      </AuthContext.Provider>
+    </ThemeProvider>
   )
 }
 

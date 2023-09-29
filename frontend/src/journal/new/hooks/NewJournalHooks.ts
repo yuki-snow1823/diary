@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client'
 import { CREATE_JOURNAL } from '../graphql/mutation'
 import { AuthContext } from '../../../App'
 
-export const JournalNewHooks = () => {
+export const NewJournalHooks = () => {
   const { currentUser } = useContext(AuthContext)
   const [createJournal] = useMutation(CREATE_JOURNAL)
 

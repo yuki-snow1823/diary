@@ -12,9 +12,11 @@ Style/Documentation:
   Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: false
-MethodLength:
+Metrics/MethodLength:
   CountComments: true
   Max: 24
+  Exclude:
+  - "db/migrate/*.rb"
 Naming/MethodParameterName:
   Enabled: false
 Metrics/BlockLength:

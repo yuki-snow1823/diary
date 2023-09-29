@@ -7,9 +7,7 @@ module Mutations
     def resolve(journal_id:)
       journal = Journal.find(journal_id).destroy
 
-      {
-        journal:
-      }
+      { journal: }
     rescue StandardError => e
       GraphQL::ExecutionError.new(e.message)
     end

@@ -12,6 +12,8 @@ Diary
 `docker-compose up`でバックエンドのAPIを起動することができます。
 その後、frontendのディレクトリで`yarn install && yarn start`を実行してください。
 
+dockerやyarnの環境がない方はbrew等を使ってセットアップをお願いします。
+
 ## 開発の手引きやアプリの説明
 WIKIをご覧ください👍
 https://github.com/yuki-snow1823/diary/wiki/
@@ -77,3 +79,6 @@ frontend/
 			├ button.tsx
 			├ ...
 ```
+
+## テストデータを増やしたい時
+推奨機能の[EditCSV](https://1-notes.com/visual-studio-code-edit-csv/)をインストールして`/backend/db/seeds_csv`を編集してください。
