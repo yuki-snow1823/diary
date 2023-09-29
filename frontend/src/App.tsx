@@ -7,6 +7,7 @@ import { IndexUserContainer } from './user/index/component/IndexUserContainer'
 import { NewJournalContainer } from './journal/new/component/NewJournalContainer'
 import { SignUpContainer } from './sign_up/component/SignUpContainer'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
+
 export interface User {
   id: number
   uid: string
@@ -101,6 +102,7 @@ function App() {
             <Routes>
               <Route path="/" element={<SignInContainer />} />
               <Route path="/sign_up" element={<SignUpContainer />} />
+              <Route path="/users" element={<IndexUserContainer />} />
               <Route path="/journal/new" element={<NewJournalContainer />} />
             </Routes>
           </ApolloProvider>
