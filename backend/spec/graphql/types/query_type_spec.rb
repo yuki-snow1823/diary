@@ -187,12 +187,12 @@ RSpec.describe Types::QueryType do
     end
 
     it '任意のuserについてモデルと一致する内容を取得できる' do
-      random_user = User.all.sample
-      expect(result.dig('data', 'users').find { |user| user['id'] == random_user.id.to_s }).to eq(
-        'id' => random_user.id.to_s,
-        'name' => random_user.name,
-        'nickname' => random_user.nickname,
-        'email' => random_user.email
+      sample_user = User.all.sample
+      expect(result.dig('data', 'users').find { |user| user['id'] == sample_user.id.to_s }).to eq(
+        'id' => sample_user.id.to_s,
+        'name' => sample_user.name,
+        'nickname' => sample_user.nickname,
+        'email' => sample_user.email
       )
     end
   end
