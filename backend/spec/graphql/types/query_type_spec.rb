@@ -150,12 +150,12 @@ RSpec.describe Types::QueryType do
     end
 
     it '任意のjournalについてモデルと一致する内容を取得できる' do
-      random_journal = journals.sample
-      expect(result.dig('data', 'userJournals').find { |journal| journal['id'] == random_journal.id.to_s }).to eq(
-        'id' => random_journal.id.to_s,
-        'title' => random_journal.title,
-        'content' => random_journal.content,
-        'userId' => random_journal.user_id
+      sample_journal = journals.sample
+      expect(result.dig('data', 'userJournals').find { |journal| journal['id'] == sample_journal.id.to_s }).to eq(
+        'id' => sample_journal.id.to_s,
+        'title' => sample_journal.title,
+        'content' => sample_journal.content,
+        'userId' => sample_journal.user_id
       )
     end
   end
@@ -188,7 +188,9 @@ RSpec.describe Types::QueryType do
 
     it '任意のuserについてモデルと一致する内容を取得できる' do
       sample_user = User.all.sample
-      expect(result.dig('data', 'users').find { |user| user['id'] == sample_user.id.to_s }).to eq(
+      actual = result.dig('data', 'users').find { |user| user['id'] == sample_user.id.to_s }
+      
+      expect(actual).to eq(
         'id' => sample_user.id.to_s,
         'name' => sample_user.name,
         'nickname' => sample_user.nickname,
