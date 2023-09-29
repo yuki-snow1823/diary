@@ -7,7 +7,7 @@ module Types
       argument :id, ID, required: true
     end
 
-    field :users, [Types::UserType], null: false 
+    field :users, [Types::UserType], null: false
 
     field :journals, [Types::JournalType], null: false
 
