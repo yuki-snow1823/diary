@@ -2,6 +2,7 @@ import { ChangeEvent, useState, useContext } from 'react'
 import Cookies from 'js-cookie'
 import { AuthContext } from 'App'
 import { signIn } from 'lib/api/auth'
+import { useNavigate } from 'react-router-dom'
 
 export interface SignInParams {
   email: string
@@ -9,6 +10,7 @@ export interface SignInParams {
 }
 
 export const SiginInHooks = () => {
+  const navigate = useNavigate()
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const { setIsSignedIn, setCurrentUser, currentUser } = useContext(AuthContext)
@@ -36,7 +38,7 @@ export const SiginInHooks = () => {
 
         setIsSignedIn(true)
         setCurrentUser(res.data.data)
-
+        navigate('/journal/new')
         console.log('Signed in successfully!')
       } else {
         console.log('faild')

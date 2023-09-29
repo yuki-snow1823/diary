@@ -3,8 +3,10 @@ import Cookies from 'js-cookie'
 import { AuthContext } from 'App'
 import { signUp } from 'lib/api/auth'
 import { SignUpParams } from 'lib/api/auth'
+import { useNavigate } from 'react-router-dom'
 
 export const SignUpHooks = () => {
+  const navigate = useNavigate()
   const [name, setName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -43,7 +45,7 @@ export const SignUpHooks = () => {
 
         setIsSignedIn(true)
         setCurrentUser(res.data.data)
-
+        navigate('/journal/new')
         console.log('Signed up successfully!')
       } else {
         console.log('faild')
