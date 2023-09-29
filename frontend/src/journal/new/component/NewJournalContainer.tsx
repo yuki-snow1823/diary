@@ -1,7 +1,7 @@
-import { JournalNewHooks } from '../hooks/JournalNewHooks'
-import NewJournalPresentational from './JournalNewPresentational'
+import { NewJournalHooks } from '../hooks/NewJournalHooks'
+import NewJournalPresentational from './NewJournalPresentational'
 
-export const JournalNewContainer = () => {
+export const NewJournalContainer = () => {
   const {
     currentUser,
     title,
@@ -9,7 +9,7 @@ export const JournalNewContainer = () => {
     handleCreateJournal,
     setTitle,
     setContent
-  } = JournalNewHooks()
+  } = NewJournalHooks()
 
   return (
     <NewJournalPresentational

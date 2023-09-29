@@ -8,26 +8,35 @@ import Typography from '@mui/material/Typography'
 
 type Props = {
   currentUser: User | undefined
+  name: string
   email: string
   password: string
+  passwordConfirmation: string
+  handleNameChange: React.ChangeEventHandler<HTMLInputElement>
   handleEmailChange: React.ChangeEventHandler<HTMLInputElement>
   handlePasswordChange: React.ChangeEventHandler<HTMLInputElement>
+  handlePasswordConfirmationChange: React.ChangeEventHandler<HTMLInputElement>
   handleSubmit: () => Promise<void>
 }
 
-const SignInPresentational: React.FC<Props> = (props) => {
+const SignUpPresentational: React.FC<Props> = (props) => {
   return (
     <Container maxWidth="sm">
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" component="h2" gutterBottom>
-          ログイン
+          新規登録
         </Typography>
 
-        {props.currentUser ? (
-          <Typography variant="h5" component="h5" gutterBottom>
-            {props.currentUser.email}でログインしてるよ
-          </Typography>
-        ) : null}
+        <TextField
+          fullWidth
+          margin="normal"
+          id="name"
+          type="text"
+          label="Name"
+          value={props.name}
+          onChange={props.handleNameChange}
+          required
+        />
 
         <TextField
           fullWidth
@@ -51,18 +60,33 @@ const SignInPresentational: React.FC<Props> = (props) => {
           required
         />
 
+        <TextField
+          fullWidth
+          margin="normal"
+          id="passwordConfirmation"
+          type="password"
+          label="Password Confirmation"
+          value={props.passwordConfirmation}
+          onChange={props.handlePasswordConfirmationChange}
+          required
+        />
+
         <Button
           fullWidth
           variant="contained"
           color="primary"
-          disabled={!props.email || !props.password}
+          disabled={
+            !props.email ||
+            !props.password ||
+            props.password !== props.passwordConfirmation
+          }
           onClick={props.handleSubmit}
         >
-          Sign In
+          Sign Up
         </Button>
       </Box>
     </Container>
   )
 }
 
-export default SignInPresentational
+export default SignUpPresentational
