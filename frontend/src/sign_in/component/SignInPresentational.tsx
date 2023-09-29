@@ -19,11 +19,13 @@ const SignInPresentational: React.FC<Props> = (props) => {
   return (
     <Container maxWidth="sm">
       <Box sx={{ my: 4 }}>
+        <Typography variant="h4" component="h2" gutterBottom>
+          ログイン
+        </Typography>
+
         {props.currentUser ? (
-          <Typography variant="h4" component="h2" gutterBottom>
-            {props.currentUser.email}
-            <br />
-            でログインしてるよ
+          <Typography variant="h5" component="h5" gutterBottom>
+            {props.currentUser.email}でログインしてるよ
           </Typography>
         ) : null}
 

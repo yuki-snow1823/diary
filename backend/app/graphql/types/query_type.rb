@@ -7,6 +7,8 @@ module Types
       argument :id, ID, required: true
     end
 
+    field :users, [Types::UserType], null: false
+
     field :journals, [Types::JournalType], null: false
 
     field :journal, Types::JournalType, null: false do
@@ -22,11 +24,15 @@ module Types
     end
 
     def journals
-      Journal.all
+      Journal.order(:id)
     end
 
     def journal(id:)
       Journal.find(id)
+    end
+
+    def users
+      User.all
     end
 
     def user_journals(user_id:)
