@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Types
   class JournalType < Types::BaseObject
     field :id, ID, null: false

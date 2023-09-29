@@ -35,14 +35,16 @@ const NewJournalPresentational: React.FC<Props> = (props) => {
           onChange={(e) => props.setContent(e.target.value)}
           sx={{ mt: 2 }}
         />
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={props.handleCreateJournal}
-          sx={{ mt: 3 }}
-        >
-          投稿
-        </Button>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 3 }}>
+          <Button
+            type="button"
+            variant="contained"
+            color="primary"
+            onClick={props.handleCreateJournal}
+          >
+            投稿
+          </Button>
+        </Box>
       </Box>
     </Container>
   )
