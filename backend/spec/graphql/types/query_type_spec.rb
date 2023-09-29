@@ -150,12 +150,51 @@ RSpec.describe Types::QueryType do
     end
 
     it '任意のjournalについてモデルと一致する内容を取得できる' do
-      random_journal = journals.sample
-      expect(result.dig('data', 'userJournals').find { |journal| journal['id'] == random_journal.id.to_s }).to eq(
-        'id' => random_journal.id.to_s,
-        'title' => random_journal.title,
-        'content' => random_journal.content,
-        'userId' => random_journal.user_id
+      sample_journal = journals.sample
+      expect(result.dig('data', 'userJournals').find { |journal| journal['id'] == sample_journal.id.to_s }).to eq(
+        'id' => sample_journal.id.to_s,
+        'title' => sample_journal.title,
+        'content' => sample_journal.content,
+        'userId' => sample_journal.user_id
+      )
+    end
+  end
+
+  describe 'users' do
+    before do
+      create_list(:user, 3)
+    end
+
+    let(:query) do
+      <<~QUERY
+        query GetAllUsers {
+          users {
+            id
+            name
+            nickname
+            email
+          }
+        }
+      QUERY
+    end
+
+    let(:result) do
+      BackendSchema.execute(query)
+    end
+
+    it '全てのuserを取得できる' do
+      expect(result.dig('data', 'users').size).to eq(User.count)
+    end
+
+    it '任意のuserについてモデルと一致する内容を取得できる' do
+      sample_user = User.all.sample
+      actual = result.dig('data', 'users').find { |user| user['id'] == sample_user.id.to_s }
+
+      expect(actual).to eq(
+        'id' => sample_user.id.to_s,
+        'name' => sample_user.name,
+        'nickname' => sample_user.nickname,
+        'email' => sample_user.email
       )
     end
   end
