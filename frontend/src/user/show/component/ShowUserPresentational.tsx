@@ -9,7 +9,6 @@ type Props = {
 }
 
 const ShowUserPresentational: React.FC<Props> = ({ user }) => {
-  console.log(user, 'あああ')
   if (!user) {
     return (
       <Container maxWidth="sm">
@@ -30,17 +29,17 @@ const ShowUserPresentational: React.FC<Props> = ({ user }) => {
         </Typography>
 
         <Typography variant="h6">名前:</Typography>
-        <Typography>{user.user.name}</Typography>
+        <Typography>{user.name}</Typography>
 
         {user.nickname && (
           <>
             <Typography variant="h6">ニックネーム:</Typography>
-            <Typography>{user.user.nickname}</Typography>
+            <Typography>{user.nickname}</Typography>
           </>
         )}
 
         <Typography variant="h6">Eメール:</Typography>
-        <Typography>{user.user.email}</Typography>
+        <Typography>{user.email}</Typography>
       </Box>
     </Container>
   )
