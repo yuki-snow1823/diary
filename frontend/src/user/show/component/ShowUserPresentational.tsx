@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography'
 import { User } from 'App'
 
 type Props = {
-  user: any
+  user: User
 }
 
 const ShowUserPresentational: React.FC<Props> = ({ user }) => {
