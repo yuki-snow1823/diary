@@ -10,12 +10,12 @@ export const ShowUserHooks = () => {
   })
 
   if (loading) {
-    console.log("Loading user data...")
+    console.log('Loading user data...')
     return { user: null }
   }
 
   if (error) {
-    console.error("Error fetching user data:", error)
+    console.error('Error fetching user data:', error)
     return { user: null }
   }
 
