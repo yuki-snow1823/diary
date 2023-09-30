@@ -1,18 +1,25 @@
 import { USER_QUERY } from '../graphql/query'
 import { useQuery } from '@apollo/client'
-import { User } from 'App'
 import { useParams } from 'react-router-dom'
 
 export const ShowUserHooks = () => {
-  const { user_id } = useParams()
-
-  console.log(user_id, 'id')
+  const { id } = useParams()
 
   const { data, loading, error } = useQuery(USER_QUERY, {
-    variables: { id: user_id }
+    variables: { id: id }
   })
 
-  const user = data
+  if (loading) {
+    console.log("Loading user data...")
+    return { user: null }
+  }
+
+  if (error) {
+    console.error("Error fetching user data:", error)
+    return { user: null }
+  }
+
+  const user = data && data.user ? data.user : null
 
   return { user }
 }
