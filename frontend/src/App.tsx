@@ -102,6 +102,7 @@ function App() {
             <Routes>
               <Route path="/" element={<SignInContainer />} />
               <Route path="/sign_up" element={<SignUpContainer />} />
+              <Route path="/user/:id" element={<ShowUserContainer />} />
               <Route path="/journal/new" element={<NewJournalContainer />} />
             </Routes>
           </ApolloProvider>
