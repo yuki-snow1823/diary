@@ -1,7 +1,7 @@
 FROM ruby:3.2.0
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs default-mysql-client vim
 
-ENV APP_PATH /sample
+ENV APP_PATH /api
 
 RUN mkdir $APP_PATH
 WORKDIR $APP_PATH
