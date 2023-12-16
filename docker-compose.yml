@@ -21,6 +21,7 @@ services:
     environment:
       TZ: Asia/Tokyo
       GITHUB_ACTIONS: "${GITHUB_ACTIONS:-false}"
+      SECRET_KEY_BASE: ENV["SECRET_KEY_BASE"]
     ports:
       - 3000:3000
     depends_on:
