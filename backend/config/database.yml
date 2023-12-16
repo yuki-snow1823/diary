@@ -49,7 +49,6 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
+  <<: *default
+  adapter: postgresql
   url: <%= ENV["BACKEND_DATABASE_URL"] %>
-  database: diary
-  username: yuki
-  password: <%= ENV["BACKEND_DATABASE_PASSWORD"] %>
