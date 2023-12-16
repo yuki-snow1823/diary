@@ -1,48 +1,48 @@
-import { Container, Box, Typography } from '@mui/material'
-import React from 'react'
+import React from 'react';
+import { Container, Box, Typography, Table, TableHead, TableRow, TableCell, TableBody, Paper } from '@mui/material';
 
 interface user {
-  id: number
-  name: string
-  nickname: string
-  email: string
+  id: number;
+  name: string;
+  nickname: string;
+  email: string;
 }
 
 type Props = {
-  users: user[]
+  users: user[];
 }
 
-export const IndexUserPresentational: React.FC<Props> = (props) => {
-  const users = props.users
+export const IndexUserPresentational: React.FC<Props> = ({ users }) => {
   return (
-    <>
-      <Container>
-        <Box sx={{ mt: 8 }}>
-          <Typography variant="h4" component="div" gutterBottom>
-            ユーザー一覧
-          </Typography>
-          <table>
-            <thead>
-              <tr>
-                <th>id</th>
-                <th>name</th>
-                <th>nickname</th>
-                <th>email</th>
-              </tr>
-            </thead>
-            <tbody>
+    <Container>
+      <Box sx={{ mt: 8, mb: 4 }}>
+        <Typography variant="h4" gutterBottom>
+          ユーザー一覧
+        </Typography>
+
+        <Paper elevation={3}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>ID</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell>Nickname</TableCell>
+                <TableCell>Email</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
               {users.map((user) => (
-                <tr>
-                  <td>{user.id}</td>
-                  <td>{user.name}</td>
-                  <td>{user.nickname}</td>
-                  <td>{user.email}</td>
-                </tr>
+                <TableRow key={user.id}>
+                  <TableCell>{user.id}</TableCell>
+                  <TableCell>{user.name}</TableCell>
+                  <TableCell>{user.nickname}</TableCell>
+                  <TableCell>{user.email}</TableCell>
+                </TableRow>
               ))}
-            </tbody>
-          </table>
-        </Box>
-      </Container>
-    </>
-  )
+            </TableBody>
+          </Table>
+        </Paper>
+      </Box>
+    </Container>
+  );
 }
