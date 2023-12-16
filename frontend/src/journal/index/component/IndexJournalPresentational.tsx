@@ -1,14 +1,24 @@
-import React from 'react';
-import { Container, Box, Typography, Table, TableHead, TableRow, TableCell, TableBody, Paper } from '@mui/material';
+import React from 'react'
+import {
+  Container,
+  Box,
+  Typography,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  Paper
+} from '@mui/material'
 
 interface journal {
-  id: number;
-  title: string;
-  content: string;
+  id: number
+  title: string
+  content: string
 }
 
 type Props = {
-  journals: journal[];
+  journals: journal[]
 }
 
 const IndexJournalPresentational: React.FC<Props> = ({ journals }) => {
@@ -41,7 +51,7 @@ const IndexJournalPresentational: React.FC<Props> = ({ journals }) => {
         </Paper>
       </Box>
     </Container>
-  );
+  )
 }
 
-export default IndexJournalPresentational;
+export default IndexJournalPresentational
