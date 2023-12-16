@@ -3,6 +3,7 @@ import { SignInContainer } from 'sign_in/component/SignInContainer'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { getCurrentUser } from 'lib/api/auth'
 import { createContext, useEffect, useState } from 'react'
+import { IndexUserContainer } from './user/index/component/IndexUserContainer'
 import { NewJournalContainer } from './journal/new/component/NewJournalContainer'
 import { IndexJournalContainer } from './journal/index/component/IndexJournalContainer'
 import { SignUpContainer } from './sign_up/component/SignUpContainer'
@@ -102,6 +103,7 @@ function App() {
             <Routes>
               <Route path="/" element={<SignInContainer />} />
               <Route path="/sign_up" element={<SignUpContainer />} />
+              <Route path="/users" element={<IndexUserContainer />} />
               <Route path="/journals" element={<IndexJournalContainer />} />
               <Route path="/journal/new" element={<NewJournalContainer />} />
             </Routes>
