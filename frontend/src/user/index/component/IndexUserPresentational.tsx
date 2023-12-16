@@ -1,15 +1,25 @@
-import React from 'react';
-import { Container, Box, Typography, Table, TableHead, TableRow, TableCell, TableBody, Paper } from '@mui/material';
+import React from 'react'
+import {
+  Container,
+  Box,
+  Typography,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  Paper
+} from '@mui/material'
 
 interface user {
-  id: number;
-  name: string;
-  nickname: string;
-  email: string;
+  id: number
+  name: string
+  nickname: string
+  email: string
 }
 
 type Props = {
-  users: user[];
+  users: user[]
 }
 
 export const IndexUserPresentational: React.FC<Props> = ({ users }) => {
@@ -44,5 +54,5 @@ export const IndexUserPresentational: React.FC<Props> = ({ users }) => {
         </Paper>
       </Box>
     </Container>
-  );
+  )
 }
