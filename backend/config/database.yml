@@ -50,6 +50,6 @@ test:
 #
 production:
   <<: *default
-  database: backend_production
-  username: backend
+  database: diary
+  username: yuki
   password: <%= ENV["BACKEND_DATABASE_PASSWORD"] %>
