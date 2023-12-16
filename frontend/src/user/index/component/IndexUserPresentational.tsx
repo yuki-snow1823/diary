@@ -17,7 +17,7 @@ export const IndexUserPresentational: React.FC<Props> = ({ users }) => {
     <Container>
       <Box sx={{ mt: 8, mb: 4 }}>
         <Typography variant="h4" gutterBottom>
-          ユーザー一覧
+          ユーザー
         </Typography>
 
         <Paper elevation={3}>
