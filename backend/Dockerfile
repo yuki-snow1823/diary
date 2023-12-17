@@ -6,6 +6,7 @@ RUN bundle install
 COPY . .
 
 RUN chmod +x bin/render-build.sh
+RUN rm -f tmp/pids/*.pid
 
 EXPOSE 3000
 
