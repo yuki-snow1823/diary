@@ -5,8 +5,7 @@ COPY Gemfile* ./
 RUN bundle install
 COPY . .
 
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
+RUN chmod +x bin/render-build.sh
 
 EXPOSE 3000
 
