@@ -10,6 +10,7 @@ import { IndexJournalContainer } from './journal/index/component/IndexJournalCon
 import { SignUpContainer } from './sign_up/component/SignUpContainer'
 import { ShowUserContainer } from 'user/show/component/ShowUserContainer'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
+import Header from 'common/header'
 
 export interface User {
   id: number
@@ -102,6 +103,7 @@ function App() {
       >
         <BrowserRouter>
           <ApolloProvider client={client}>
+            <Header />
             <Routes>
               <Route path="/" element={<SignInContainer />} />
               <Route path="/sign_up" element={<SignUpContainer />} />
