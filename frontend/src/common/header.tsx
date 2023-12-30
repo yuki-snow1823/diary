@@ -1,6 +1,5 @@
 import { AppBar, Toolbar, Typography, Button } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
-
 import { useContext } from 'react'
 import { AuthContext } from 'App'
 
