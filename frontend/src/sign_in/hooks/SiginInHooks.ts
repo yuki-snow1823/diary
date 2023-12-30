@@ -38,7 +38,7 @@ export const SiginInHooks = () => {
 
         setIsSignedIn(true)
         setCurrentUser(res.data.data)
-        navigate('/journal/new')
+        navigate(`/users/${res.data.data.id}`)
         console.log('Signed in successfully!')
       } else {
         console.log('faild')
