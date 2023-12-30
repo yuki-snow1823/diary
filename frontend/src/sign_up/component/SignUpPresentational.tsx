@@ -23,7 +23,6 @@ const SignUpPresentational: React.FC<Props> = (props) => {
   return (
     <Container maxWidth="sm">
       <Box sx={{ my: 4 }}>
-
         <TextField
           fullWidth
           margin="normal"

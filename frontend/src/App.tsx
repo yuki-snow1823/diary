@@ -12,7 +12,6 @@ import { ShowUserContainer } from 'user/show/component/ShowUserContainer'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import Header from 'common/header'
 
-
 export interface User {
   id: number
   uid: string
