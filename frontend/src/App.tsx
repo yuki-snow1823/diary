@@ -107,7 +107,7 @@ function App() {
               <Route path="/users" element={<IndexUserContainer />} />
               <Route path="/users/:id" element={<ShowUserContainer />} />
               <Route path="/journals" element={<IndexJournalContainer />} />
-              <Route path="/journal/new" element={<NewJournalContainer />} />
+              <Route path="/journals/new" element={<NewJournalContainer />} />
             </Routes>
           </ApolloProvider>
         </BrowserRouter>
