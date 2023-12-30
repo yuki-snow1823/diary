@@ -5,9 +5,8 @@ import { AuthContext } from 'App'
 
 const Header = () => {
   const { isSignedIn } = useContext(AuthContext)
-
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ backgroundColor: '#372BA9' }}>
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <RouterLink

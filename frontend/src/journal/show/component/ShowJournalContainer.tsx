@@ -26,15 +26,11 @@ export const ShowJournalContainer = () => {
         <Table>
           <TableBody>
             <TableRow>
-              <TableCell>ID:</TableCell>
-              <TableCell>{data.journal.id}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Title:</TableCell>
+              <TableCell>タイトル：</TableCell>
               <TableCell>{data.journal.title}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>Content:</TableCell>
+              <TableCell>内容：</TableCell>
               <TableCell>{data.journal.content}</TableCell>
             </TableRow>
           </TableBody>
