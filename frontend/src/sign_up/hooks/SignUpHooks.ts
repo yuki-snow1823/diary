@@ -45,7 +45,7 @@ export const SignUpHooks = () => {
 
         setIsSignedIn(true)
         setCurrentUser(res.data.data)
-        navigate('/journal/new')
+        navigate(`/users/${res.data.data.id}`)
         console.log('Signed up successfully!')
       } else {
         console.log('faild')
