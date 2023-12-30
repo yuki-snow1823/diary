@@ -10,7 +10,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     if Rails.env.development?
       origins "http://localhost:8080"
     else
-      origins "https://venerable-swan-963e5e.netlify.app"
+      origins "https://diary.bar"
     end
 
     resource "*",
