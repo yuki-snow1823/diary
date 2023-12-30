@@ -23,9 +23,6 @@ const SignUpPresentational: React.FC<Props> = (props) => {
   return (
     <Container maxWidth="sm">
       <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h2" gutterBottom>
-          新規登録
-        </Typography>
 
         <TextField
           fullWidth
@@ -82,7 +79,7 @@ const SignUpPresentational: React.FC<Props> = (props) => {
           }
           onClick={props.handleSubmit}
         >
-          Sign Up
+          新規登録
         </Button>
       </Box>
     </Container>
