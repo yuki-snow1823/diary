@@ -3,7 +3,7 @@ import { SignInContainer } from 'sign_in/component/SignInContainer'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { getCurrentUser } from 'lib/api/auth'
 import { createContext, useEffect, useState } from 'react'
-import { JournalDetailContainer } from 'journal/show/component/JournalDetailContainer '
+import { ShowJournalContainer } from 'journal/show/component/ShowJournalContainer'
 import { IndexUserContainer } from './user/index/component/IndexUserContainer'
 import { NewJournalContainer } from './journal/new/component/NewJournalContainer'
 import { IndexJournalContainer } from './journal/index/component/IndexJournalContainer'
@@ -111,7 +111,7 @@ function App() {
 
               <Route path="/journals/new" element={<NewJournalContainer />} />
               <Route path="/journals" element={<IndexJournalContainer />} />
-              <Route path="/journal/:id" element={<JournalDetailContainer />} />
+              <Route path="/journals/:id" element={<ShowJournalContainer />} />
             </Routes>
           </ApolloProvider>
         </BrowserRouter>
