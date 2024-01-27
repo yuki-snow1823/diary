@@ -1,14 +1,7 @@
-import { useQuery } from '@apollo/client'
-import { FIND_JOURNAL } from '../graphql/query'
+import { ShowJournalPresentational } from './ShowJournalPresentational'
 import { useParams } from 'react-router-dom'
-import {
-  Container,
-  Box,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow
-} from '@mui/material'
+import { FIND_JOURNAL } from '../graphql/query'
+import { useQuery } from '@apollo/client'
 
 export const ShowJournalContainer = () => {
   const urlParams = useParams<{ id: string }>()
@@ -20,22 +13,5 @@ export const ShowJournalContainer = () => {
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error! {error.message}</p>
 
-  return (
-    <Container maxWidth="sm">
-      <Box my={4}>
-        <Table>
-          <TableBody>
-            <TableRow>
-              <TableCell>タイトル：</TableCell>
-              <TableCell>{data.journal.title}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>内容：</TableCell>
-              <TableCell>{data.journal.content}</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </Box>
-    </Container>
-  )
+  return <ShowJournalPresentational journal={data.journal} />
 }

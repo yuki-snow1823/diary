@@ -80,5 +80,8 @@ frontend/
 			├ ...
 ```
 
+## 画面幅
+基本的に画面幅は`<Container maxWidth="sm">`を指定して、スマホで見たときに画面が見やすくなるようにしましょう。
+
 ## テストデータを増やしたい時
 推奨機能の[EditCSV](https://1-notes.com/visual-studio-code-edit-csv/)をインストールして`/backend/db/seeds_csv`を編集してください。
