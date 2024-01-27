@@ -1,11 +1,4 @@
-import {
-  Container,
-  Box,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow
-} from '@mui/material'
+import { Container, Box, Typography } from '@mui/material'
 
 interface journal {
   id: number
@@ -20,19 +13,15 @@ type Props = {
 export const ShowJournalPresentational: React.FC<Props> = ({ journal }) => {
   return (
     <Container maxWidth="sm">
-      <Box my={4}>
-        <Table>
-          <TableBody>
-            <TableRow>
-              <TableCell>タイトル：</TableCell>
-              <TableCell>{journal.title}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>内容：</TableCell>
-              <TableCell>{journal.content}</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
+      <Box mt={8}>
+        <Box my={2}>
+          <Typography variant="h3">{journal.title}</Typography>
+        </Box>
+        <Box my={6}>
+          <Typography variant="body1" fontSize={24}>
+            サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト
+          </Typography>
+        </Box>
       </Box>
     </Container>
   )
