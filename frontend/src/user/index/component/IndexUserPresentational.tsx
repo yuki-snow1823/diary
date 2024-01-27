@@ -24,7 +24,7 @@ type Props = {
 
 export const IndexUserPresentational: React.FC<Props> = ({ users }) => {
   return (
-    <Container>
+    <Container maxWidth="sm">
       <Box sx={{ mt: 8, mb: 4 }}>
         <Typography variant="h4" gutterBottom>
           ユーザー
@@ -35,9 +35,8 @@ export const IndexUserPresentational: React.FC<Props> = ({ users }) => {
             <TableHead>
               <TableRow>
                 <TableCell>ID</TableCell>
-                <TableCell>Name</TableCell>
-                <TableCell>Nickname</TableCell>
-                <TableCell>Email</TableCell>
+                <TableCell>名前</TableCell>
+                <TableCell>メールアドレス</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -45,7 +44,6 @@ export const IndexUserPresentational: React.FC<Props> = ({ users }) => {
                 <TableRow key={user.id}>
                   <TableCell>{user.id}</TableCell>
                   <TableCell>{user.name}</TableCell>
-                  <TableCell>{user.nickname}</TableCell>
                   <TableCell>{user.email}</TableCell>
                 </TableRow>
               ))}

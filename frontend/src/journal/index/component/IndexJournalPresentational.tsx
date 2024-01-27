@@ -26,7 +26,7 @@ const IndexJournalPresentational: React.FC<Props> = ({ journals }) => {
     <Container maxWidth="sm">
       <Box sx={{ mt: 8, mb: 4 }}>
         <Typography variant="h4" gutterBottom>
-          投稿記事
+          日報
         </Typography>
 
         <Paper elevation={2}>
