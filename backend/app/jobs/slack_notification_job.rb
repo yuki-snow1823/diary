@@ -8,11 +8,5 @@ class SlackNotificationJob < ApplicationJob
       req.headers['Content-Type'] = 'application/json'
       req.body = { text: "#{name} さんがDiaryに記事を投稿したよ！"}.to_json
     end
-
-    if response.success?
-      render json: response.body
-    else
-      render json: { error: 'Failed to make request' }, status: :unprocessable_entity
-    end
   end
 end
