@@ -19,7 +19,7 @@ export const ShowJournalPresentational: React.FC<Props> = ({ journal }) => {
         </Box>
         <Box my={6}>
           <Typography variant="body1" fontSize={24}>
-            サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト
+            {journal.content}
           </Typography>
         </Box>
       </Box>
