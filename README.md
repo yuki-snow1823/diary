@@ -7,12 +7,15 @@ Diary
 このプロジェクトは horiyu の友人とチーム開発をする目的で作成されました。
 友人同士で使う日記アプリです。
 
-## 開発環境の構築方法
+## 起動方法
+```
+chmod +x bin/bootstrap
+bin/bootstrap
+```
 
-`docker-compose up`でバックエンドのAPIを起動することができます。
-その後、frontendのディレクトリで`yarn install && yarn start`を実行してください。
+chmodは初回のみで大丈夫です。
+Dockerの起動とフロントエンドのビルドを分けて作業したい人は、`cd frontend`をして`yarn start`を実行してください。
 
-dockerやyarnの環境がない方はbrew等を使ってセットアップをお願いします。
 
 ## 開発の手引きやアプリの説明
 WIKIをご覧ください👍
