@@ -25,6 +25,7 @@ https://github.com/yuki-snow1823/diary/wiki/
 
 Github Actions で push した際に自動テストが実行されるようになっています。
 ローカルでは、バックエンドは` docker-compose run api bundle exec rspec s`でフロントエンドは`yarn run test`で実行できます。
+
 ## インフラ構成図
 
 ```mermaid
@@ -34,24 +35,20 @@ flowchart TB
 
     end
     DockerContainer<-->|GraphQL|React
-    subgraph Heroku
+    subgraph Render
 
 			DockerContainer<-->MySQL
-			subgraph HerokuAddOn
-				MySQL
-			end
     end
-    subgraph Vercel
+    subgraph Netlify
 
     React
     end
 
 		style React fill:#D7E7AF,stroke:#000000,stroke-width:4px
-		style Vercel fill:#A2D7D4,stroke:#000000,stroke-width:4px
+		style Netlify fill:#A2D7D4,stroke:#000000,stroke-width:4px
 		style Rails fill:#F5B2B2,stroke:#000000,stroke-width:4px
-		style Heroku fill:#A59ACA,stroke:#000000,stroke-width:4px
+		style Render fill:#A59ACA,stroke:#000000,stroke-width:4px
 		style DockerContainer fill:#9FD9F6,stroke:#000000,stroke-width:4px
-		style HerokuAddOn fill:#CFA7CD,stroke:#000000,stroke-width:4px
 		style MySQL fill:#A3BCE2,stroke:#000000,stroke-width:4px
 ```
 
