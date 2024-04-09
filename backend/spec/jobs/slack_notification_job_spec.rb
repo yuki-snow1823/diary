@@ -10,7 +10,7 @@ RSpec.describe SlackNotificationJob, type: :job do
       .to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :size).by(1)
   end
 
-  it 'postされること' do
+  it 'postリクエストが送信されること' do
     expect_any_instance_of(Faraday::Connection).to receive(:post)
     perform_enqueued_jobs { job }
   end
