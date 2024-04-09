@@ -4,7 +4,7 @@ class SlackNotificationJob < ApplicationJob
   def perform(name)
     conn = Faraday.new(url: 'https://hooks.slack.com')
     conn.post do |req|
-      req.url '/services/{固有キー}/{固有キー}'
+      req.url ENV['SLACK_WEBHOOK_URL']
       req.headers['Content-Type'] = 'application/json'
       req.body = { text: "#{name} さんがDiaryに記事を投稿したよ！" }.to_json
     end
