@@ -10,7 +10,7 @@ module Mutations
       journal = Journal.create!({ title:, content:, user_id: })
 
       target_user_name = journal.user.name
-      SlackNotificationsController.call(target_user_name)
+      SlackNotificationJob.perform_later(target_user_name)
 
       { journal: }
     end
